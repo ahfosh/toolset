@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>评论提取</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+			color: #333;
+			margin: 0;
+			padding: 0;
+		}
+
+		input[type="text"],
+		button {
+			padding: 8px;
+			margin: 5px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+
+		input[type="text"]:focus,
+		button:focus {
+			outline: none;
+			border-color: #66afe9;
+			box-shadow: 0 0 5px #66afe9;
+		}
+
+		table {
+			border-collapse: collapse;
+			margin: auto;
+			/* This centers the table horizontally */
+			text-align: center;
+		}
+
+		th,
+		td {
+			border: 1px solid black;
+			padding: 8px;
+		}
+
+		th {
+			background-color: #f2f2f2;
+		}
+
+		tbody tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+
+		tbody tr:hover {
+			background-color: #ddd;
+		}
+	</style>
+</head>
+
+<body>
+	<input type="text" id="postIdInput" placeholder="请输入postId">
+	<input type="text" id="searchText" placeholder="请输入要搜索的文本">
+	<button onclick="fetchComments()">获取评论</button>
+	<table>
+		<thead>
+			<tr>
+				<th>序号</th>
+				<th>用户ID</th>
+				<th>用户名</th>
+				<th>全球积分</th>
+				<th>中国积分</th>
+				<th>封禁状态</th>
+			</tr>
+		</thead>
+		<tbody id="comments"></tbody>
+	</table>
+	<script src="comments.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>数据转换为表格</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+			color: #333;
+			margin: 0;
+			padding: 0;
+		}
+
+		header {
+			background-color: #222;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+		}
+
+		h1 {
+			margin-top: 0;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 20px auto;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 8px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		h2 {
+			color: #444;
+			margin-top: 0;
+			/* added to remove default margin */
+		}
+
+		p {
+			line-height: 1.6;
+		}
+
+		footer {
+			background-color: #222;
+			color: #fff;
+			text-align: center;
+			padding: 10px;
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+		}
+
+		textarea,
+		input[type="text"],
+		button {
+			margin-bottom: 10px;
+			width: calc(100% - 22px);
+			/* Adjusted width to fit container */
+			padding: 5px;
+			font-size: 16px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+
+		button {
+			padding: 8px 20px;
+			font-size: 16px;
+			cursor: pointer;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 4px;
+		}
+
+		button:hover {
+			background-color: #45a049;
+		}
+
+		#tableContainer {
+			margin-top: 20px;
+		}
+
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		th,
+		td {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+
+		th {
+			background-color: #f2f2f2;
+		}
+	</style>
+</head>
+
+<body>
+
+	<header>
+		<h1>数据转换为表格</h1>
+	</header>
+
+	<div class="container">
+
+		<h2>输入数据：</h2>
+		<textarea id="inputData" placeholder="用指定文字隔开的数据"></textarea>
+		<input type="text" id="separator" placeholder="指定文字">
+
+		<button onclick="convertToTable()">转换为表格</button>
+
+		<h2>显示结果：</h2>
+		<div id="tableContainer">
+			<!-- 转换后的表格将显示在这里 -->
+		</div>
+
+	</div>
+
+	<footer>
+		<p>&copy; 2024 数据转换应用</p>
+	</footer>
+
+	<script>
+		function convertToTable() {
+    var inputData = document.getElementById('inputData').value;
+    var separator = document.getElementById('separator').value;
+
+    var rows = inputData.split('\n');
+    var table = '<table>';
+    for (var i = 0; i < rows.length; i++) {
+      table += '<tr>';
+      var columns = rows[i].split(separator);
+      for (var j = 0; j < columns.length; j++) {
+        table += '<td>' + columns[j] + '</td>';
+      }
+      table += '</tr>';
+    }
+    table += '</table>';
+
+    document.getElementById('tableContainer').innerHTML = table;
+  }
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>个人资料</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			text-align: center;
+		}
+
+		table {
+			border-collapse: collapse;
+			width: 80%;
+			margin: auto auto;
+		}
+
+		th,
+		td {
+			border: 1px solid #ddd;
+			padding: 8px;
+		}
+
+		th {
+			background-color: #f2f2f2;
+		}
+
+		tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+
+		tr:nth-child(odd) {
+			background-color: #ffffff;
+		}
+
+		h2 {
+			margin-top: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>个人资料</h1>
+	<label for="uidInput">输入用户ID：</label>
+	<input type="text" id="uidInput" onkeydown="if(event.keyCode==13) fetchUserData()">
+	<button onclick="fetchUserData()">查</button>
+	<br><br>
+	<div id="profileData"></div>
+
+	<script src="user.js"></script>
+</body>
+
+</html>
