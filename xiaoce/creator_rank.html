@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Creators Rank</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .container {
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+        /* Remove hyperlink styles */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>小测验创建者排行</h1>
+    </header>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>排名</th>
+                    <th>UID</th>
+                    <th>头像</th>
+                    <th>昵称</th>
+                    <th>测验次数</th>
+                </tr>
+            </thead>
+            <tbody id="userRankTable">
+                <!-- Data will be dynamically populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Function to make HTTP request and fetch data
+        async function fetchData() {
+            try {
+                const response = await fetch('https://xiaoce.fun/api/v0/xiaoce/user/getTopCreators?period=all');
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        // Function to populate table with data
+        async function populateTable() {
+            const tableBody = document.getElementById('userRankTable');
+            const data = await fetchData();
+
+            if (data && data.data) {
+                const topCreators = data.data;
+                tableBody.innerHTML = ''; // Clear existing rows
+
+                topCreators.forEach((entry, index) => {
+                    const { user, times } = entry;
+                    const { userId, userName, icon } = user;
+
+                    const row = `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${userId}</td>
+                            <td><img src="https://i.chao-fan.com/${icon}" alt="Avatar"></td>
+                            <td><a href="https://xiaoce.fun/u/${userId}" target="_blank">${userName}</a></td>
+                            <td>${times}</td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                });
+            }
+        }
+
+        // Populate table with fetched data
+        populateTable();
+    </script>
+</body>
+</html>
