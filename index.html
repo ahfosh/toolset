@@ -14,11 +14,23 @@
             padding: 0;
         }
 
-        header {
+        header,
+        footer {
             background-color: #222;
             color: #fff;
-            padding: 20px;
+        }
+
+        header {
+            padding: 1.75%;
             text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 0.75%;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
 
         h1 {
@@ -26,12 +38,13 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 100%;
             margin: 20px auto;
             padding: 20px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         h2 {
@@ -42,14 +55,57 @@
             line-height: 1.6;
         }
 
-        footer {
-            background-color: #222;
-            color: #fff;
+        form {
             text-align: center;
+            margin-top: 20%;
+        }
+
+        input[type="text"] {
             padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            border-radius: 25px;
+            border: none;
+            background-color: #f9f9f9;
+            width: 300px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        select {
+            padding: 10px;
+            border-radius: 25px;
+            border: none;
+            background-color: #f9f9f9;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+            appearance: none;
+            -webkit-appearance: none;
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            text-align: center;
+        }
+
+        select:focus {
+            outline: none;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            background-color: black;
+            color: #fff;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #404040;
         }
     </style>
 </head>
@@ -59,6 +115,28 @@
     <header>
         <h1>Welcome to ahfosh's Personal Webpage</h1>
     </header>
+
+    <form action="" id="searchForm">
+        <select id="searchEngine" name="searchEngine">
+            <option value="baidu">Baidu</option>
+            <option value="google">Google</option>
+        </select>
+        <input type="text" id="searchQuery" name="query" placeholder="Finding...">
+        <input type="submit" value="Search">
+    </form>
+
+    <script>
+        document.getElementById("searchForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // 阻止表单默认提交行为
+            var searchEngine = document.getElementById("searchEngine").value;
+            var query = document.getElementById("searchQuery").value;
+            if (searchEngine === "baidu") {
+                window.location.href = "https://www.baidu.com/s?wd=" + encodeURIComponent(query);
+            } else if (searchEngine === "google") {
+                window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
+            }
+        });
+    </script>
 
     <footer>
         <p>&copy; 2019-2024 ahfosh_studio. All Rights Reserved.</p>
