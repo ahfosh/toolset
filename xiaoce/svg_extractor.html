@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SVG Path Extractor</title>
+    <script src="/xiaoce/svg_extractor.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            color: #333;
+        }
+
+        select,
+        input[type="file"],
+        button {
+            font-size: 16px;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        select {
+            width: 100%;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .total-ids {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>SVG Path Extractor</h1>
+        <label for="svgFile">Select an SVG file:</label>
+        <input type="file" id="svgFile" accept=".svg">
+        <br>
+        <label for="pathType">Select tag type to extract:</label>
+        <select id="pathType">
+            <option value="path">Path</option>
+            <option value="circle">Circle</option>
+            <option value="g">Group (g)</option>
+            <option value="text">Text</option>
+        </select>
+        <br>
+        <label for="displayType">Select display type:</label>
+        <select id="displayType">
+            <option value="text">Text</option>
+            <option value="table">Table</option>
+        </select>
+        <br>
+        <button id="extractBtn">Extract Paths</button>
+        <br>
+        <div id="textDisplay" style="display: none;">
+            <ul id="pathList"></ul>
+            <p class="total-ids">Total IDs: <span id="totalIdsText">0</span></p>
+        </div>
+        <div id="tableDisplay" style="display: none;">
+            <table id="pathTable">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                </tr>
+            </table>
+            <p class="total-ids">Total IDs: <span id="totalIdsTable">0</span></p>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#extractBtn").click(function () {
+                var file = $("#svgFile")[0].files[0];
+                var selectedTag = $("#pathType").val();
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var svgText = e.target.result;
+                        var svg = $(svgText);
+                        var elements = svg.find(selectedTag);
+                        var displayType = $("#displayType").val();
+                        var totalIds = 0; // Initialize totalIds counter
+                        if (displayType === "text") {
+                            var pathList = $("#pathList");
+                            pathList.empty();
+                            elements.each(function () {
+                                var id = $(this).attr('id');
+                                var title = $(this).attr('title') || $(this).attr('name');
+                                if (!title && /[\u4e00-\u9fa5]/.test(id)) {
+                                    title = id;
+                                }
+                                pathList.append("<li>" + id + "," + title + "</li>");
+                                totalIds++; // Increment totalIds counter
+                            });
+                            $("#totalIdsText").text(totalIds); // Display totalIds
+                            $("#textDisplay").show();
+                            $("#tableDisplay").hide();
+                        } else if (displayType === "table") {
+                            var pathTable = $("#pathTable");
+                            pathTable.find("tr:gt(0)").remove(); // Clear existing rows
+                            elements.each(function () {
+                                var id = $(this).attr('id');
+                                var title = $(this).attr('title') || $(this).attr('name');
+                                if (!title && /[\u4e00-\u9fa5]/.test(id)) {
+                                    title = id;
+                                    id = id;
+                                }
+                                pathTable.append("<tr><td>" + id + "</td><td>" + title + "</td></tr>");
+                                totalIds++; // Increment totalIds counter
+                            });
+                            $("#totalIdsTable").text(totalIds); // Display totalIds
+                            $("#tableDisplay").show();
+                            $("#textDisplay").hide();
+                        }
+                    };
+                    reader.readAsText(file);
+                } else {
+                    alert("Please select an SVG file to extract paths from.");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
