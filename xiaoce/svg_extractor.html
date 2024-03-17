@@ -250,8 +250,9 @@
                         answerParam.split("/").forEach(function (e) {
                             title += $(that).attr(e) + "/"
                         })
+                        title = title.slice(0, -1)
                     }
-                    ret.push({ "id": id, "name": title.slice(0, -1) })
+                    ret.push({ "id": id, "name": title })
                 })
                 return ret
             }
