@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>SVG Path Extractor</title>
+    <title>SVG属性提取工具</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         body {
@@ -19,6 +19,9 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         h1 {
@@ -110,106 +113,112 @@
         .show {
             top: 10px;
         }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
 <body>
     <div class="hint" id="hint">复制成功</div>
     <div class="container">
-        <h1>SVG Path Extractor</h1>
-        <label for="svgFile">Select an SVG file:</label>
+        <button id="toggleLanguage">Switch Language / 切换语言</button>
+        <h1>SVG属性提取工具</h1>
+        <label for="svgFile">选择SVG文件</label>
         <input type="file" id="svgFile" accept=".svg">
         <br>
-        <label for="pathType">Select tag type to extract:</label>
+        <label for="pathType">选择要提取的标签类型：</label>
         <select id="pathType">
-            <option value="path">Path</option>
-            <option value="circle">Circle</option>
-            <option value="g">Group (g)</option>
-            <option value="text">Text</option>
+            <option value="path">path 路径</option>
+            <option value="circle">circle 圆形</option>
+            <option value="g">g 组(group)</option>
+            <option value="text">text 文本</option>
         </select>
         <br>
-        <label for="displayType">Select display type:</label>
+        <label for="displayType">选择显示类型：</label>
         <select id="displayType">
-            <option value="text">Text</option>
-            <option value="table">Table</option>
+            <option value="text">文本</option>
+            <option value="table">表格</option>
         </select>
         <br>
-        <label for="answerParam">Select answer param:</label>
+        <label for="answerParam">输入答案参数：</label>
         <input type="text" id="answerParam">
         <br>
-        <button id="extractBtn">Extract Paths</button><button id="copyBtn">Copy All</button>
+        <button id="extractBtn">提取路径</button>
+        <button id="copyBtn">复制全部</button>
         <br>
         <div id="textDisplay" style="display: none;">
             <ul id="pathList"></ul>
-            <p class="total-ids">Total IDs: <span id="totalIdsText">0</span></p>
+            <p class="total-ids">总ID数：<span id="totalIdsText">0</span></p>
         </div>
         <div id="tableDisplay" style="display: none;">
             <table id="pathTable">
                 <tr>
                     <th>ID</th>
-                    <th>Title</th>
+                    <th>标题</th>
                 </tr>
             </table>
-            <p class="total-ids">Total IDs: <span id="totalIdsTable">0</span></p>
+            <p class="total-ids">总ID数：<span id="totalIdsTable">0</span></p>
         </div>
     </div>
-    <!-- <script>
-        $(document).ready(function () {
-            $("#extractBtn").click(function () {
-                var file = $("#svgFile")[0].files[0];
-                var selectedTag = $("#pathType").val();
-                if (file) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        var svgText = e.target.result;
-                        var svg = $(svgText);
-                        var elements = svg.find(selectedTag);
-                        var displayType = $("#displayType").val();
-                        var totalIds = 0; // Initialize totalIds counter
-                        if (displayType === "text") {
-                            var pathList = $("#pathList");
-                            pathList.empty();
-                            elements.each(function () {
-                                var id = $(this).attr('id');
-                                var title = $(this).attr('title') || $(this).attr('name');
-                                if (!title && /[\u4e00-\u9fa5]/.test(id)) {
-                                    title = id;
-                                }
-                                pathList.append("<li>" + id + "," + title + "</li>");
-                                totalIds++; // Increment totalIds counter
-                            });
-                            $("#totalIdsText").text(totalIds); // Display totalIds
-                            $("#textDisplay").show();
-                            $("#tableDisplay").hide();
-                        } else if (displayType === "table") {
-                            var pathTable = $("#pathTable");
-                            pathTable.find("tr:gt(0)").remove(); // Clear existing rows
-                            elements.each(function () {
-                                var id = $(this).attr('id');
-                                var title = $(this).attr('title') || $(this).attr('name');
-                                if (!title && /[\u4e00-\u9fa5]/.test(id)) {
-                                    title = id;
-                                    id = id;
-                                }
-                                pathTable.append("<tr><td>" + id + "</td><td>" + title + "</td></tr>");
-                                totalIds++; // Increment totalIds counter
-                            });
-                            $("#totalIdsTable").text(totalIds); // Display totalIds
-                            $("#tableDisplay").show();
-                            $("#textDisplay").hide();
-                        }
-                    };
-                    reader.readAsText(file);
-                } else {
-                    alert("Please select an SVG file to extract paths from.");
-                }
-            });
-        });
-    </script> -->
-
     <script>
         $(document).ready(function () {
             var copyText = ""
+            var isChinese = true;
+
+            $("#toggleLanguage").click(function () {
+                if (isChinese) {
+                    $("body").find("*").each(function () {
+                        $(this).contents().filter(function () {
+                            return this.nodeType === 3;
+                        }).each(function () {
+                            this.textContent = this.textContent.replace(/SVG属性提取工具/g, 'SVG Properties Extractor');
+                            this.textContent = this.textContent.replace(/选择SVG文件/g, 'Select an SVG file');
+                            this.textContent = this.textContent.replace(/选择要提取的标签类型/g, 'Select tag type to extract');
+                            this.textContent = this.textContent.replace(/选择显示类型/g, 'Select display type');
+                            this.textContent = this.textContent.replace(/输入答案参数/g, 'Input answer param');
+                            this.textContent = this.textContent.replace(/提取路径/g, 'Extract Paths');
+                            this.textContent = this.textContent.replace(/复制全部/g, 'Copy All');
+                            this.textContent = this.textContent.replace(/总ID数/g, 'Total IDs');
+                            this.textContent = this.textContent.replace(/path 路径/g, 'Path');
+                            this.textContent = this.textContent.replace(/circle 圆形/g, 'Circle');
+                            this.textContent = this.textContent.replace(/g 组\(group\)/g, 'Group (g)');
+                            this.textContent = this.textContent.replace(/text 文本/g, 'Text');
+                            this.textContent = this.textContent.replace(/文本/g, 'Text');
+                            this.textContent = this.textContent.replace(/表格/g, 'Table');
+                            this.textContent = this.textContent.replace(/复制成功/g, 'Copy Successful');
+                        });
+                    });
+                    isChinese = false;
+                } else {
+                    $("body").find("*").each(function () {
+                        $(this).contents().filter(function () {
+                            return this.nodeType === 3;
+                        }).each(function () {
+                            this.textContent = this.textContent.replace(/SVG Properties Extractor/g, 'SVG属性提取工具');
+                            this.textContent = this.textContent.replace(/Select an SVG file/g, '选择SVG文件');
+                            this.textContent = this.textContent.replace(/Select tag type to extract/g, '选择要提取的标签类型');
+                            this.textContent = this.textContent.replace(/Select display type/g, '选择显示类型');
+                            this.textContent = this.textContent.replace(/Input answer param/g, '输入答案参数');
+                            this.textContent = this.textContent.replace(/Extract Paths/g, '提取路径');
+                            this.textContent = this.textContent.replace(/Copy All/g, '复制全部');
+                            this.textContent = this.textContent.replace(/Total IDs/g, '总ID数');
+                            this.textContent = this.textContent.replace(/Path/g, 'path 路径');
+                            this.textContent = this.textContent.replace(/Circle/g, 'circle 圆形');
+                            this.textContent = this.textContent.replace(/Group \(g\)/g, 'g 组(group)');
+                            this.textContent = this.textContent.replace(/Text/g, 'text 文本');
+                            this.textContent = this.textContent.replace(/Text/g, '文本');
+                            this.textContent = this.textContent.replace(/Table/g, '表格');
+                            this.textContent = this.textContent.replace(/Copy Successful/g, '复制成功');
+                        });
+                    });
+                    isChinese = true;
+                }
+            });
+
             $("#copyBtn").click(async function () {
                 if (navigator.clipboard && window.isSecureContext) {
                     await navigator.clipboard.writeText(copyText)
@@ -241,7 +250,7 @@
                     var id = $(this).attr('id');
                     var title = $(this).attr('title') || $(this).attr('name')
                     if (!title && /[\u4e00-\u9fa5]/.test(id)) {
-                        title = id; // substitute id for name
+                        title = id; // 如果没有标题且包含中文，则使用ID代替
                     }
                     if (answerParam) {
                         title = ""
@@ -292,7 +301,7 @@
                     reader.readAsText(file);
                 }
                 else {
-                    alert("Please select an SVG file to extract paths from.");
+                    alert("请选择一个SVG文件以提取路径。");
                 }
             });
         });
