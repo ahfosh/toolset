@@ -127,7 +127,7 @@
 
     <script>
         document.getElementById("searchForm").addEventListener("submit", function (event) {
-            event.preventDefault(); // 阻止表单默认提交行为
+            event.preventDefault();
             var searchEngine = document.getElementById("searchEngine").value;
             var query = document.getElementById("searchQuery").value;
             if (searchEngine === "baidu") {
@@ -140,6 +140,7 @@
 
     <footer>
         <p>&copy; 2019-2024 ahfosh_studio. All Rights Reserved.</p>
+        <p>Website based on <a href="https://github.com/ahfosh/toolset">ahfosh's toolset</a></p>
     </footer>
 
 </body>

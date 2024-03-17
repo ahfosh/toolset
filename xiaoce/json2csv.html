@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JSON to CSV</title>
+    <script>
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const json = JSON.parse(e.target.result);
+                const rows = json.query.row;
+
+                // 将 JSON 数据转换为 CSV 格式
+                let csvContent = "data:text/csv;charset=utf-8,";
+
+                // 将每行数据转换为逗号分隔的值，并添加到 CSV 内容中
+                rows.forEach(row => {
+                    const rowValues = Object.values(row).join(",");
+                    csvContent += rowValues + "\n";
+                });
+
+                // 创建一个下载链接并设置文件名
+                const encodedUri = encodeURI(csvContent);
+                const link = document.createElement("a");
+                link.setAttribute("href", encodedUri);
+                link.setAttribute("download", "output.csv");
+                document.body.appendChild(link);
+                link.click();
+            };
+
+            reader.readAsText(file);
+        }
+    </script>
+</head>
+
+<body>
+    <input type="file" onchange="handleFileSelect(event)">
+</body>
+
+</html>
