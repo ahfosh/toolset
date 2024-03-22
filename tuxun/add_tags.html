@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON文件上传并修改</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      width: 80%;
+      max-width: 600px;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="file"] {
+      margin-bottom: 10px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #output {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <input type="file" id="fileInput" accept=".json"><br>
+
+    <button onclick="handleFile()">上传</button>
+    <button onclick="modifyJSON()">处理</button>
+    <button onclick="downloadJSON()">下载</button>
+
+    <div id="output"></div>
+  </div>
+
+  <script>
+    let originalJSON = null;
+    let modifiedJSON = null;
+
+    function handleFile() {
+      const fileInput = document.getElementById('fileInput');
+      const file = fileInput.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+        reader.readAsText(file, 'UTF-8');
+        reader.onload = function (event) {
+          originalJSON = event.target.result;
+          document.getElementById('output').textContent = 'JSON文件已加载。';
+        }
+      } else {
+        document.getElementById('output').textContent = '未选择文件。';
+      }
+    }
+
+    function modifyJSON() {
+      if (originalJSON) {
+        const locations = JSON.parse(originalJSON).customCoordinates;
+        if (locations && locations.length > 0) {
+          locations.forEach(location => {
+            const panoDate = location.extra.panoDate;
+            if (panoDate) {
+              // 如果拍摄日期存在，则将其添加到tags标签内
+              if (!location.extra.tags.includes(panoDate)) {
+                location.extra.tags.push(panoDate);
+              }
+            }
+          });
+          // 将修改后的JSON内容保存到全局变量
+          modifiedJSON = JSON.stringify(locations, null, 2);
+          document.getElementById('output').textContent = 'JSON文件已修改。';
+        } else {
+          document.getElementById('output').textContent = 'JSON文件中未找到地点信息。';
+        }
+      } else {
+        document.getElementById('output').textContent = '请先上传JSON文件。';
+      }
+    }
+
+    function downloadJSON() {
+      if (modifiedJSON) {
+        const blob = new Blob([modifiedJSON], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'modified.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        document.getElementById('output').textContent = '修改后的JSON文件已下载。';
+      } else {
+        document.getElementById('output').textContent = '请先修改JSON文件。';
+      }
+    }
+  </script>
+
+</body>
+
+</html>
