@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	let levelBtns = document.querySelectorAll('.level-btn'); // 等级按钮
 
 	// 获取CSV数据并根据选定的级别渲染地区名称
-	fetch('county.csv', {
+	fetch('code.csv', {
 		headers: {
 			'Content-Type': 'text/csv; charset=utf-8'
 		}
