@@ -89,20 +89,23 @@
                 <!-- Data will be dynamically populated here -->
             </tbody>
         </table>
+        <button id="loadMoreBtn" class="btn">加载更多</button>
     </div>
 
     <script>
+        let currentIndex = 0; // 记录当前加载的数据索引
+    
         // Function to make HTTP request and fetch data
         async function fetchData(period) {
             try {
                 const response = await fetch(`https://xiaoce.fun/api/v0/xiaoce/user/getTopCreators?period=${period}`);
                 const data = await response.json();
-                populateTable(data.data);
+                populateTable(data.data, 0); // 从头开始加载数据
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         }
-
+    
         // Function to make HTTP request and fetch user stats
         async function fetchUserStats(userId) {
             try {
@@ -114,24 +117,27 @@
                 return { createScratchTaken: 0, createScratchTotal: 0 }; // 返回默认值
             }
         }
-
+    
         // Function to populate table with data
-        async function populateTable(topCreators) {
+        async function populateTable(topCreators, startIndex) {
             const tableBody = document.getElementById('userRankTable');
-
+    
             if (topCreators) {
-                tableBody.innerHTML = ''; // 清除现有行
-
-                for (let i = 0; i < topCreators.length; i++) {
+                // 如果是从头开始加载，清空现有行
+                if (startIndex === 0) {
+                    tableBody.innerHTML = '';
+                }
+    
+                for (let i = startIndex; i < topCreators.length && i < startIndex + 10; i++) { // 限制加载十个数组
                     const entry = topCreators[i];
                     const { user } = entry;
                     const { userId, userName, icon } = user;
-
+    
                     // 获取用户统计信息
                     const userData = await fetchUserStats(userId);
                     const createScratchTaken = userData.createScratchTaken;
                     const createScratchTotal = userData.createScratchTotal;
-
+    
                     const row = `
                         <tr>
                             <td>${i + 1}</td>
@@ -144,11 +150,23 @@
                     `;
                     tableBody.innerHTML += row;
                 }
+    
+                // 更新当前加载的索引
+                currentIndex = startIndex + 10;
             }
         }
-
-        // Populate table with fetched data on page load
+    
+        // 加载更多按钮点击事件处理函数
+        document.getElementById('loadMoreBtn').addEventListener('click', async function() {
+            // 继续加载下一个数据集
+            const response = await fetch(`https://xiaoce.fun/api/v0/xiaoce/user/getTopCreators?period=all&start=${currentIndex}`);
+            const data = await response.json();
+            populateTable(data.data, currentIndex);
+        });
+    
+        // 初始加载
         fetchData('all');
     </script>
+    
 </body>
 </html>
