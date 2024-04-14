@@ -113,6 +113,10 @@
         input[type="submit"]:hover {
             background-color: #404040;
         }
+
+        #notice-box {
+			text-align: center;
+		}
     </style>
 </head>
 
@@ -130,6 +134,30 @@
         <input type="text" id="searchQuery" name="query" placeholder="Finding...">
         <input type="submit" value="Search">
     </form>
+
+    
+	<div id="notice-box">
+                <p>找大佬重写主页，需求：
+                <br>左边栏放炒饭的几个网站和icon
+                <br>choa.fun icon炒饭logo; tuxun.fun icon图寻群头像; xiaoce.fun icon测验群头像; yuque.com/chaofun/ icon语雀logo
+                <br>右边栏放本站的几个工具和icon
+                <br>/test/administration 政区测验; /test/code 区号测验; /xiaoce/svg_extrator SVGid提取器 (icon全都网上找)
+                <br>优化一下现在这个搜索引擎样的工具
+                <br>优化页眉页脚之类的东西
+                <br>搞个好看点的css
+                <br>源代码在底下GitHub库里 一点没藏
+                <br>谢谢佬！
+            <button id="toggle-button" onclick="hideBox()">不再显示</button>
+        
+            <script>
+                function hideBox() {
+                    const noticeBox = document.getElementById('notice-box');
+                    const toggleButton = document.getElementById('toggle-button');
+        
+                    noticeBox.style.display = 'none'; // 隐藏显示框
+                }
+            </script>
+    </div>
 
     <script>
         document.getElementById("searchForm").addEventListener("submit", function (event) {
