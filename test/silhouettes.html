@@ -45,16 +45,16 @@
 			margin: 0;
 		}
 
-        main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+		main {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
 
 		#display-container {
 			width: 65vh;
@@ -92,7 +92,7 @@
 		button {
 			padding: 12px;
 			background-color: #545454;
-            width: 80px;
+			width: 80px;
 			color: #fff;
 			border: none;
 			border-radius: 5px;
@@ -110,7 +110,7 @@
 <body>
 	<header>
 		<h2>中国各级行政区轮廓测验 为图寻中国及小测验而制</h2>
-        <p>DataResource: China Temporal sequence Administrative Map</p>
+		<p>DataResource: China Temporal sequence Administrative Map</p>
 	</header>
 
 	<main>
@@ -118,14 +118,14 @@
 			<svg id="display-svg"></svg>
 		</div>
 		<div id="input-container">
-            <button id="refresh-btn">Refresh</button>
+			<button id="refresh-btn">Refresh</button>
 			<input type="text" id="input-id" placeholder="Enter ID">
 			<button id="switch-btn">Switch</button>
 		</div>
 	</main>
 
 	<footer>
-        <p>&copy; China Temporal sequence Administrative Map &copy; 2019-2024 ahfosh_studio. All Rights Reserved. </p>
+		<p>&copy; China Temporal sequence Administrative Map &copy; 2019-2024 ahfosh_studio. All Rights Reserved. </p>
 	</footer>
 
 	<script>
@@ -219,10 +219,10 @@
 		// Check input when it changes
 		document.getElementById('input-id').addEventListener('input', checkInput);
 
-       // Switch to a new Path
-        document.getElementById('refresh-btn').addEventListener('click', () => {
-            main(svgPaths[currentIndex]);
-        });
+		// Switch to a new Path
+		document.getElementById('refresh-btn').addEventListener('click', () => {
+			main(svgPaths[currentIndex]);
+		});
 
 		// Switch SVG button functionality
 		document.getElementById('switch-btn').addEventListener('click', () => {
