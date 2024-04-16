@@ -64,8 +64,6 @@ function displayPath(path) {
 
     const viewBoxValues = clonedPath.getBBox();
     displaySVG.setAttribute('viewBox', `${viewBoxValues.x} ${viewBoxValues.y} ${viewBoxValues.width} ${viewBoxValues.height}`);
-
-    console.log('Displayed path:', clonedPath.getAttribute('data-id'));
 }
 
 async function loadAndDisplaySVG(svgUrl) {
@@ -107,7 +105,7 @@ function checkInput() {
 // Set the SVG file URL
 loadAndDisplaySVG(svgPaths[currentIndex]);
 
-document.getElementById('input-id').addEventListener('input', function() {
+document.getElementById('input-id').addEventListener('input', function () {
     shouldStopExecution = false; // Reset flag on input event
     checkInput(); // Call checkInput function
 });
