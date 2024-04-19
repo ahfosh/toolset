@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG Path 点击游戏</title>
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #game-container {
+      text-align: center;
+    }
+
+    #game-container svg {
+      max-width: 100%;
+      max-height: calc(100vh - 100px);
+      /* 100px 为提示框的高度 */
+    }
+
+    #message-box {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="game-container">
+    <object id="svg-object" data="click-prefecture.svg" type="image/svg+xml"></object>
+    <div id="message-box"></div>
+  </div>
+
+  <script>
+    // 准备阶段
+    var svgObject = document.getElementById('svg-object');
+    var messageBox = document.getElementById('message-box');
+    var csvFilePath = 'click-prefecture.csv'; // CSV 文件路径
+
+    fetch(csvFilePath)
+      .then(response => response.text())
+      .then(csvData => loadSVG(csvData))
+      .catch(error => console.error('CSV 文件加载错误:', error));
+
+    function loadSVG(csvData) {
+      svgObject.addEventListener('load', function () {
+        var svgDocument = svgObject.contentDocument;
+        var svg = svgDocument.getElementsByTagName('svg')[0];
+        svg.setAttribute('style', 'fill:white;stroke:black;stroke-width:0.5;');
+        var displayGroup = svg.getElementById('display');
+        var paths = displayGroup.getElementsByTagName('path');
+        var pathData = parseCSV(csvData);
+
+        // 将 CSV 数据解析为对象
+        function parseCSV(csv) {
+          var lines = csv.split('\n');
+          var result = [];
+          var headers = lines[0].split(',');
+          for (var i = 1; i < lines.length; i++) {
+            var obj = {};
+            var currentline = lines[i].split(',');
+            for (var j = 0; j < headers.length; j++) {
+              obj[headers[j].trim()] = currentline[j].trim();
+            }
+            result.push(obj);
+          }
+          return result;
+        }
+
+        // 获取路径的 title
+        function getTitleById(id) {
+          for (var i = 0; i < pathData.length; i++) {
+            if (pathData[i].id === id) {
+              return pathData[i].title;
+            }
+          }
+          return null;
+        }
+
+        var pathIds = [];
+        for (var i = 0; i < paths.length; i++) {
+          pathIds.push(paths[i].id);
+        }
+
+        // 展示阶段
+        var currentPathId = null;
+
+        function showRandomPath() {
+          var randomIndex = Math.floor(Math.random() * pathIds.length);
+          currentPathId = pathIds[randomIndex];
+          console.log("当前路径 ID:", currentPathId);
+          showMessage('请点击路径：' + getTitleById(currentPathId));
+        }
+
+        function showMessage(message) {
+          messageBox.innerText = message;
+          messageBox.style.display = 'block';
+        }
+
+        function hideMessage() {
+          messageBox.style.display = 'none';
+        }
+
+        svg.addEventListener('click', function (event) {
+          // 判定阶段
+          var clickedPathId = event.target.id;
+          console.log("点击了路径 ID:", clickedPathId);
+          if (clickedPathId === currentPathId) {
+            showMessage('恭喜你，点击正确！');
+            setTimeout(function () {
+              hideMessage();
+              showRandomPath();
+            }, 1000);
+          } else {
+            showMessage('点击错误，请继续点击路径：' + getTitleById(currentPathId));
+          }
+        });
+
+        // 初始化游戏
+        showRandomPath();
+
+        // 显示SVG
+        svg.style.display = 'block';
+      });
+    }
+  </script>
+
+</body>
+
+</html>
