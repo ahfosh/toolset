@@ -112,6 +112,21 @@
         input[type="submit"]:hover {
             background-color: #404040;
         }
+
+        .quick-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: black;
+            color: #fff;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .quick-link:hover {
+            background-color: #404040;
+        }
     </style>
 </head>
 
@@ -130,6 +145,18 @@
         <input type="submit" value="Search">
     </form>
 
+    <div class="container">
+        <h2>工具｜测验</h2>
+        <p>
+            <a class="quick-link" href="xiaoce\svg_extractor">SVGid提取</a>
+            <a class="quick-link" href="chaofun\comments">赛事报名统计</a>
+            <a class="quick-link" href="test\silhouettes">政区轮廓</a>
+            <a class="quick-link" href="test\click">政区点选</a>
+            <a class="quick-link" href="test\administration">政区归属</a>
+            <a class="quick-link" href="test\code">车牌属地</a>
+        </p>
+    </div>
+
     <script>
         document.getElementById("searchForm").addEventListener("submit", function (event) {
             event.preventDefault();
@@ -144,7 +171,8 @@
     </script>
 
     <footer>
-        <p>&copy; 2019-2024 ahfosh_studio. All Rights Reserved. Website based on <a href="https://github.com/ahfosh/toolset">ahfosh's toolset</a></p>
+        <p>&copy; 2019-2024 ahfosh_studio. All Rights Reserved. Website based on <a
+                href="https://github.com/ahfosh/toolset">ahfosh's toolset</a></p>
     </footer>
 
 </body>
