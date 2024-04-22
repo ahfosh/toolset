@@ -167,7 +167,7 @@
             xhr.open("GET", "abbreviations.csv", true);
             xhr.send();
         }
-        
+
         function copyToClipboard() {
             var table = document.getElementById("resultTable");
             var range = document.createRange();
@@ -176,15 +176,14 @@
             window.getSelection().addRange(range);
             document.execCommand("copy");
             window.getSelection().removeAllRanges();
-            alert("表格内容已复制到剪贴板！");
         }
-        
+
         function exportToCSV() {
             var csv = [];
             var rows = document.querySelectorAll("table tr");
             for (var i = 0; i < rows.length; i++) {
                 var row = [], cols = rows[i].querySelectorAll("td, th");
-                for (var j = 0; j < cols.length; j++) 
+                for (var j = 0; j < cols.length; j++)
                     row.push(cols[j].innerText);
                 csv.push(row.join(","));
             }
@@ -192,7 +191,7 @@
             var encodedUri = encodeURI(csvContent);
             var link = document.createElement("a");
             link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "地名简称查询结果.csv");
+            link.setAttribute("download", "result.csv");
             document.body.appendChild(link);
             link.click();
         }
