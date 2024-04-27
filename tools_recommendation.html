@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tools Recommendation</title>
     <style>
-        body {
+body {
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
             color: #333;
@@ -21,20 +21,22 @@
         }
 
         header {
-            padding: 1.75%;
+            padding: 1.5%;
             text-align: center;
         }
 
         footer {
             text-align: center;
-            padding: 0.75%;
+            padding: 1.25%;
             position: fixed;
             bottom: 0;
             width: 100%;
         }
 
-        h1 {
-            margin-top: 0;
+        h1,
+        h2,
+        p {
+            margin: 0;
         }
 
         .container {
@@ -42,7 +44,7 @@
             margin: 20px auto;
             padding: 20px;
             background-color: #fff;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
@@ -61,18 +63,21 @@
         }
 
         .quick-link {
+            vertical-align: baseline;
             display: inline-block;
-            padding: 10px 20px;
+            padding: 10px 15px;
             margin: 5px;
             background-color: black;
             color: #fff;
             border-radius: 25px;
             text-decoration: none;
-            transition: background-color 0.3s ease-in-out;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
         }
 
         .quick-link:hover {
-            background-color: #404040;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+            transition: box-shadow 0.3s ease-in-out;
         }
     </style>
 </head>
@@ -90,8 +95,17 @@
             <a class="quick-link" href="https://mapcheckr.vercel.app/">MapCheckr</a>
             <a class="quick-link" href="hhttps://map-making.app/">MapMaking</a>
             <a class="quick-link" href="https://sv-map.netlify.app/">StreetView</a>
-            <a class="quick-link" href="https://geohints.com/">GeoHints</a>
             <a class="quick-link" href="https://geo.emily.bz/">Emliy's Tools</a>
+        </p>
+    </div>
+
+    <div class="container">
+        <h2>图寻技巧学习</h2>
+        <p>
+            <a class="quick-link" href="https://virtualstreets.org/">VirtualStreets</a>
+            <a class="quick-link" href="https://www.yuque.com/chaofun/tuxun/">TuxunDoc</a>
+            <a class="quick-link" href="http://www.worldlicenseplates.com/hp.html">CarPlates</a>
+            <a class="quick-link" href="https://geohints.com/">GeoHints</a>
         </p>
     </div>
 
@@ -100,7 +114,7 @@
         <p>
             <a class="quick-link" href="https://mapshaper.org/">MapShaper</a>
             <a class="quick-link" href="https://inkscape.org/en/release/">Inkscape</a>
-            <a class="quick-link" href="/xiaoce/svg_extractor">ID_extract</a>
+            <a class="quick-link" href="/xiaoce/svg_extractor.html">ID_extract</a>
         </p>
     </div>
 
