@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
@@ -62,13 +62,13 @@
             text-decoration: none;
         }
 
-        form {
+        #searchForm {
             text-align: center;
             margin-top: 10vh;
             margin-bottom: 10vh;
         }
 
-        input[type="text"] {
+        #searchQuery {
             padding: 10px;
             border-radius: 25px;
             border: none;
@@ -76,47 +76,17 @@
             width: 300px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s ease-in-out;
-        }
-
-        input[type="text"]:focus {
             outline: none;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
         }
 
-        select {
-            padding: 10px;
-            border-radius: 25px;
-            border: none;
-            background-color: #f9f9f9;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease-in-out;
-            appearance: none;
-            -webkit-appearance: none;
-            background-repeat: no-repeat;
-            background-position: 10px center;
-            text-align: center;
+        #searchEngineButton {
+            width: 75px;
         }
 
-        select:focus {
-            outline: none;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-        }
-
+        #searchEngineButton,
+        .quick-link,
         input[type="submit"] {
-            padding: 10px 20px;
-            border: none;
-            background-color: black;
-            color: #fff;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background-color 0.3s ease-in-out;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #404040;
-        }
-
-        .quick-link {
+            vertical-align: baseline;
             display: inline-block;
             padding: 10px 15px;
             margin: 5px;
@@ -124,11 +94,16 @@
             color: #fff;
             border-radius: 25px;
             text-decoration: none;
-            transition: background-color 0.3s ease-in-out;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
         }
 
-        .quick-link:hover {
-            background-color: #404040;
+        #searchEngineButton:hover,
+        #searchQuery:focus,
+        .quick-link:hover,
+        input[type="submit"]:hover {
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+            transition: box-shadow 0.3s ease-in-out;
         }
     </style>
 </head>
@@ -140,10 +115,7 @@
     </header>
 
     <form action="" id="searchForm">
-        <select id="searchEngine" name="searchEngine">
-            <option value="baidu">Baidu</option>
-            <option value="google">Google</option>
-        </select>
+        <button type="button" id="searchEngineButton">Baidu</button>
         <input type="text" id="searchQuery" name="query" placeholder="Finding...">
         <input type="submit" value="Search">
     </form>
@@ -181,14 +153,37 @@
     </div>
 
     <script>
+        var currentSearchEngine = "baidu"; // 默认搜索引擎为百度
+
+        // 获取搜索引擎按钮
+        var searchEngineButton = document.getElementById("searchEngineButton");
+
+        // 添加点击事件监听器
+        searchEngineButton.addEventListener("click", function () {
+            // 切换搜索引擎
+            if (currentSearchEngine === "baidu") {
+                currentSearchEngine = "google";
+                this.textContent = "Google";
+            } else if (currentSearchEngine === "google") {
+                currentSearchEngine = "bing";
+                this.textContent = "Bing";
+            } else if (currentSearchEngine === "bing") {
+                currentSearchEngine = "baidu";
+                this.textContent = "Baidu";
+            }
+        });
+
+        // 添加表单提交事件监听器
         document.getElementById("searchForm").addEventListener("submit", function (event) {
             event.preventDefault();
-            var searchEngine = document.getElementById("searchEngine").value;
             var query = document.getElementById("searchQuery").value;
-            if (searchEngine === "baidu") {
+            // 根据当前搜索引擎跳转到对应的搜索页面
+            if (currentSearchEngine === "baidu") {
                 window.location.href = "https://www.baidu.com/s?wd=" + encodeURIComponent(query);
-            } else if (searchEngine === "google") {
+            } else if (currentSearchEngine === "google") {
                 window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
+            } else if (currentSearchEngine === "bing") {
+                window.location.href = "https://www.bing.com/search?q=" + encodeURIComponent(query);
             }
         });
     </script>
