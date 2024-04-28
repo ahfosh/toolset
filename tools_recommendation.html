@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
@@ -69,6 +69,7 @@
             margin: 5px;
             background-color: black;
             color: #fff;
+            position: relative;
             border-radius: 25px;
             text-decoration: none;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -78,6 +79,26 @@
         .quick-link:hover {
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
             transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .quick-link::after {
+            content: attr(data-description);
+            width: max-content;
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+        }
+
+        .quick-link:hover::after {
+            opacity: 1;
         }
     </style>
 </head>
@@ -91,30 +112,30 @@
     <div class="container">
         <h2>图寻题库制图</h2>
         <p>
-            <a class="quick-link" href="https://map-generator-nsj.vercel.app/">MapGenerator</a>
-            <a class="quick-link" href="https://mapcheckr.vercel.app/">MapCheckr</a>
-            <a class="quick-link" href="hhttps://map-making.app/">MapMaking</a>
-            <a class="quick-link" href="https://sv-map.netlify.app/">StreetView</a>
-            <a class="quick-link" href="https://geo.emily.bz/">Emliy's Tools</a>
+            <a class="quick-link" href="https://map-generator-nsj.vercel.app/" data-description="AI批量生成地点">MapGenerator</a>
+            <a class="quick-link" href="https://mapcheckr.vercel.app/" data-description="根据要求审查地点">MapCheckr</a>
+            <a class="quick-link" href="https://map-making.app/" data-description="手选或查看地点">MapMaking</a>
+            <a class="quick-link" href="https://sv-map.netlify.app/" data-description="查看当前街景覆盖">StreetView</a>
+            <a class="quick-link" href="https://geo.emily.bz/" data-description="多种用途工具合集">Emliy's Tools</a>
         </p>
     </div>
 
     <div class="container">
         <h2>图寻技巧学习</h2>
         <p>
-            <a class="quick-link" href="https://virtualstreets.org/">VirtualStreets</a>
-            <a class="quick-link" href="https://www.yuque.com/chaofun/tuxun/">TuxunDoc</a>
-            <a class="quick-link" href="http://www.worldlicenseplates.com/hp.html">CarPlates</a>
-            <a class="quick-link" href="https://geohints.com/">GeoHints</a>
+            <a class="quick-link" href="https://virtualstreets.org/" data-description="查看近期街景更新">VirtualStreets</a>
+            <a class="quick-link" href="https://www.yuque.com/chaofun/tuxun/" data-description="学习图寻文档教程">TuxunDoc</a>
+            <a class="quick-link" href="http://www.worldlicenseplates.com/hp.html" data-description="各国车牌样式信息">CarPlates</a>
+            <a class="quick-link" href="https://geohints.com/" data-description="百科全书式meta集">GeoHints</a>
         </p>
     </div>
 
     <div class="container">
         <h2>测验SVG制题</h2>
         <p>
-            <a class="quick-link" href="https://mapshaper.org/">MapShaper</a>
-            <a class="quick-link" href="https://inkscape.org/en/release/">Inkscape</a>
-            <a class="quick-link" href="/xiaoce/svg_extractor.html">ID_extract</a>
+            <a class="quick-link" href="https://mapshaper.org/" data-description="地理文件转换工具">MapShaper</a>
+            <a class="quick-link" href="https://inkscape.org/en/release/" data-description="SVG文件处理软件">Inkscape</a>
+            <a class="quick-link" href="/xiaoce/svg_extractor.html" data-description="一键提取SVGid">ID_extract</a>
         </p>
     </div>
 
