@@ -139,6 +139,7 @@
             <a class="quick-link" href="xiaoce/toponymic_abbreviation.html">全名转专名</a>
             <a class="quick-link" href="rank/creator.html">测验创作者排行</a>
             <a class="quick-link" href="rank/simplified.html">图寻积分排行</a>
+            <a class="quick-link" href="download/tianditu.zip">天地图中国区划</a>
         </p>
     </div>
 
@@ -153,14 +154,11 @@
     </div>
 
     <script>
-        var currentSearchEngine = "baidu"; // 默认搜索引擎为百度
+        var currentSearchEngine = "baidu";
 
-        // 获取搜索引擎按钮
         var searchEngineButton = document.getElementById("searchEngineButton");
 
-        // 添加点击事件监听器
         searchEngineButton.addEventListener("click", function () {
-            // 切换搜索引擎
             if (currentSearchEngine === "baidu") {
                 currentSearchEngine = "google";
                 this.textContent = "Google";
@@ -173,11 +171,9 @@
             }
         });
 
-        // 添加表单提交事件监听器
         document.getElementById("searchForm").addEventListener("submit", function (event) {
             event.preventDefault();
             var query = document.getElementById("searchQuery").value;
-            // 根据当前搜索引擎跳转到对应的搜索页面
             if (currentSearchEngine === "baidu") {
                 window.location.href = "https://www.baidu.com/s?wd=" + encodeURIComponent(query);
             } else if (currentSearchEngine === "google") {
