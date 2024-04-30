@@ -14,11 +14,10 @@ header {
 	text-align: center;
 }
 
-header h2 {
-	margin: 0;
-}
-
-header p {
+header h2,
+header p,
+footer p
+ {
 	margin: 0;
 }
 
@@ -30,10 +29,6 @@ footer {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-}
-
-footer p {
-	margin: 0;
 }
 
 #display-box {
@@ -51,27 +46,26 @@ footer p {
 	font-size: 18px;
 }
 
-#result {
-	margin-top: 10px;
-	font-weight: bold;
-}
-
+#result,
 #hint-text {
 	margin-top: 10px;
 	font-weight: bold;
 }
 
 button {
-	padding: 10px;
-	background-color: #545454;
+	vertical-align: baseline;
+	display: inline-block;
+	padding: 10px 15px;
+	background-color: black;
 	color: #fff;
 	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	font-size: 16px;
-	transition: background-color 0.3s ease;
+	border-radius: 25px;
+	text-decoration: none;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	transition: box-shadow 0.3s ease-in-out;
 }
 
 button:hover {
-	background-color: #696969;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+	transition: box-shadow 0.3s ease-in-out;
 }
