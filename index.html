@@ -13,25 +13,15 @@
             color: #333;
             margin: 0;
             padding: 0;
+            flex-direction: column;
         }
 
         header,
         footer {
             background-color: #222;
             color: #fff;
-        }
-
-        header {
+            text-align: center;
             padding: 1.5%;
-            text-align: center;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1.25%;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
         }
 
         h1,
@@ -40,8 +30,13 @@
             margin: 0;
         }
 
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
         .container {
-            max-width: 100%;
+            width: 95%;
             margin: 20px auto;
             padding: 20px;
             background-color: #fff;
@@ -50,19 +45,9 @@
             text-align: center;
         }
 
-        p {
-            line-height: 1.5;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
         #searchForm {
             text-align: center;
-            margin-top: 10vh;
-            margin-bottom: 10vh;
+            margin: 10vh auto;
         }
 
         #searchQuery {
@@ -112,44 +97,51 @@
         <h1>Welcome to ahfosh's Personal Webpage</h1>
     </header>
 
-    <form action="" id="searchForm">
-        <button type="button" id="searchEngineButton">Baidu</button>
-        <input type="text" id="searchQuery" name="query" placeholder="Finding...">
-        <input type="submit" value="Search">
-    </form>
+    <main>
+        <form action="" id="searchForm">
+            <button type="button" id="searchEngineButton">Baidu</button>
+            <input type="text" id="searchQuery" name="query" placeholder="Finding...">
+            <input type="submit" value="Search">
+        </form>
 
-    <div class="container">
-        <h2>友情链接</h2>
-        <p>
-            <a class="quick-link" href="https://www.yuque.com/chaofun/">语雀文档</a>
-            <a class="quick-link" href="https://tuxun.fun/">图寻</a>
-            <a class="quick-link" href="https://xiaoce.fun/">小测验</a>
-            <a class="quick-link" href="https://choa.fun/f/84">网络迷踪</a>
-            <a class="quick-link" href="tools_recommendation.html">工具推荐</a>
-        </p>
-    </div>
+        <div class="container">
+            <h2>友情链接</h2>
+            <p>
+                <a class="quick-link" href="https://www.yuque.com/chaofun/">语雀文档</a>
+                <a class="quick-link" href="https://tuxun.fun/">图寻</a>
+                <a class="quick-link" href="https://xiaoce.fun/">小测验</a>
+                <a class="quick-link" href="https://choa.fun/f/84">网络迷踪</a>
+                <a class="quick-link" href="tools_recommendation.html">工具推荐</a>
+            </p>
+        </div>
 
-    <div class="container">
-        <h2>本站工具</h2>
-        <p>
-            <a class="quick-link" href="chaofun/comments.html">赛事报名统计</a>
-            <a class="quick-link" href="xiaoce/svg_extractor.html">SVGid提取</a>
-            <a class="quick-link" href="xiaoce/toponymic_abbreviation.html">全名转专名</a>
-            <a class="quick-link" href="rank/creator.html">测验创作者排行</a>
-            <a class="quick-link" href="rank/simplified.html">图寻积分排行</a>
-            <a class="quick-link" href="download/tianditu.zip">天地图中国区划</a>
-        </p>
-    </div>
+        <div class="container">
+            <h2>本站工具</h2>
+            <p>
+                <a class="quick-link" href="chaofun/comments.html">赛事报名统计</a>
+                <a class="quick-link" href="xiaoce/svg_extractor.html">SVGid提取</a>
+                <a class="quick-link" href="xiaoce/toponymic_abbreviation.html">全名转专名</a>
+                <a class="quick-link" href="rank/creator.html">测验创作者排行</a>
+                <a class="quick-link" href="rank/simplified.html">图寻积分排行</a>
+                <a class="quick-link" href="download/tianditu.zip">天地图中国区划</a>
+            </p>
+        </div>
 
-    <div class="container">
-        <h2>知识测验</h2>
-        <p>
-            <a class="quick-link" href="test/silhouettes/">政区轮廓</a>
-            <a class="quick-link" href="test/click/">政区点选</a>
-            <a class="quick-link" href="test/administration/">政区归属</a>
-            <a class="quick-link" href="test/code/">电话区号</a>
-        </p>
-    </div>
+        <div class="container">
+            <h2>知识测验</h2>
+            <p>
+                <a class="quick-link" href="test/silhouettes/">政区轮廓</a>
+                <a class="quick-link" href="test/click/">政区点选</a>
+                <a class="quick-link" href="test/administration/">政区归属</a>
+                <a class="quick-link" href="test/code/">电话区号</a>
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2019-2024 ahfosh_studio. All Rights Reserved.
+            Website based on <a href="https://github.com/ahfosh/toolset">ahfosh's toolset</a></p>
+    </footer>
 
     <script>
         var currentSearchEngine = "baidu";
@@ -180,14 +172,7 @@
                 window.location.href = "https://www.bing.com/search?q=" + encodeURIComponent(query);
             }
         });
-    </script>
 
-    <footer>
-        <p>&copy; 2019-2024 ahfosh_studio. All Rights Reserved.
-            Website based on <a href="https://github.com/ahfosh/toolset">ahfosh's toolset</a></p>
-    </footer>
-
-    <script>
         window.onload = function () {
             var links = document.getElementsByTagName('a');
             for (var i = 0; i < links.length; i++) {

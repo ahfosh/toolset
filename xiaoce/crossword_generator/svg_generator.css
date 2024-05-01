@@ -1,0 +1,48 @@
+/* svg_generator.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+#settings {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#settings label {
+    margin-right: 10px;
+}
+
+#settings input {
+    width: 50px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
