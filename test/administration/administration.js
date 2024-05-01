@@ -1,4 +1,3 @@
-// 当文档内容加载完成时执行以下代码
 document.addEventListener('DOMContentLoaded', () => {
     // 获取页面中的元素
     let displayBox = document.getElementById('display-box'); // 显示框
@@ -8,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let hintBtn = document.getElementById('hint-btn'); // 提示按钮
     let hintText = document.getElementById('hint-text'); // 提示文本
     let levelBtns = document.querySelectorAll('.level-btn'); // 等级按钮
+    let scoreDisplay = document.getElementById('score-display'); // 显示得分
+
+    let correctAnswers = 0; // 正确回答的数量
 
     // 获取CSV数据并根据选定的级别渲染地区名称
     function fetchCSV(level) {
@@ -67,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // 如果输入不为空且与地区别名匹配
                     if (userInput !== '' && aliases.includes(userInput)) {
+                        correctAnswers++; // 增加正确回答的数量
+                        scoreDisplay.textContent = `得分：${correctAnswers}`; // 显示得分
                         currentRegion = getRandomRegion(); // 获取新的随机地区
                         displayBox.textContent = currentRegion[0]; // 显示新地区名称
                         inputBox.value = ''; // 清空输入框
@@ -85,6 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const selectedLevel = event.target.value; // 获取选定的级别
             // 如果选定的是县级或市级
             if (selectedLevel === 'county' || selectedLevel === 'prefecture') {
+                correctAnswers = 0; // 重置正确回答的数量
+                scoreDisplay.textContent = `得分：${correctAnswers}`; // 显示得分
                 fetchCSV(selectedLevel); // 获取对应级别的地区数据
                 displayBox.style.display = 'block'; // 显示地区名称框
                 inputBox.style.display = 'inline-block'; // 显示输入框
