@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QQ聊天记录处理</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>QQ聊天记录处理</h2>
+
+    <textarea id="chatRecord" rows="10" cols="50"></textarea><br>
+    标准数字: <input type="number" id="standardNumber">
+    <button onclick="processChatRecord()">处理</button>
+
+    <div id="output"></div>
+
+    <script>
+        function processChatRecord() {
+            var chatRecord = document.getElementById("chatRecord").value;
+
+            var regex = /【(.*?)】(.*?) (\d{2}:\d{2}:\d{2})\n([\s\S]*?)(?=\n【|$)/g;
+            var match;
+            var messages = [];
+
+            while ((match = regex.exec(chatRecord)) !== null) {
+                var sender = match[1];
+                var username = match[2];
+                var time = match[3];
+                var content = match[4].trim();
+
+                var message = {
+                    sender: sender,
+                    username: username,
+                    time: time,
+                    content: content
+                };
+
+                messages.push(message);
+            }
+
+            var standardNumber = parseFloat(document.getElementById("standardNumber").value);
+
+            displayMessages(messages, standardNumber);
+        }
+
+        function displayMessages(messages, standardNumber) {
+            var outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = "";
+
+            if (messages.length === 0) {
+                outputDiv.innerHTML = "未找到完全由数字组成的消息。";
+                return;
+            }
+
+            var table = document.createElement("table");
+            var headerRow = table.insertRow();
+            var headers = ["发送者", "用户名", "时间", "内容", "与标准数字差值"];
+
+            for (var i = 0; i < headers.length; i++) {
+                var header = document.createElement("th");
+                header.textContent = headers[i];
+                headerRow.appendChild(header);
+            }
+
+            var minDifference = Number.MAX_VALUE;
+            var minDifferenceMessage = null;
+
+            for (var j = 0; j < messages.length; j++) {
+                var message = messages[j];
+                var row = table.insertRow();
+                row.insertCell().textContent = message.sender;
+                row.insertCell().textContent = message.username;
+                row.insertCell().textContent = message.time;
+                row.insertCell().textContent = message.content;
+
+                var number = parseFloat(message.content);
+                var difference = Math.abs(number - standardNumber);
+
+                row.insertCell().textContent = difference.toFixed(2);
+
+                if (difference < minDifference) {
+                    minDifference = difference;
+                    minDifferenceMessage = message;
+                }
+            }
+
+            outputDiv.appendChild(table);
+
+            if (minDifferenceMessage) {
+                var minDifferenceOutput = document.createElement("p");
+                minDifferenceOutput.textContent = "与标准数字差值最小的消息来自于 " + minDifferenceMessage.sender + "，用户名为：" + minDifferenceMessage.username + "，内容为：" + minDifferenceMessage.content + "，差值为：" + minDifference.toFixed(2);
+                outputDiv.appendChild(minDifferenceOutput);
+            }
+        }
+    </script>
+
+    <!-- Code injected by live-server -->
+    <script>
+        // <![CDATA[  <-- For SVG support
+        if ('WebSocket' in window) {
+            (function () {
+                function refreshCSS() {
+                    var sheets = [].slice.call(document.getElementsByTagName("link"));
+                    var head = document.getElementsByTagName("head")[0];
+                    for (var i = 0; i < sheets.length; ++i) {
+                        var elem = sheets[i];
+                        var parent = elem.parentElement || head;
+                        parent.removeChild(elem);
+                        var rel = elem.rel;
+                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                        }
+                        parent.appendChild(elem);
+                    }
+                }
+                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                var address = protocol + window.location.host + window.location.pathname + '/ws';
+                var socket = new WebSocket(address);
+                socket.onmessage = function (msg) {
+                    if (msg.data == 'reload') window.location.reload();
+                    else if (msg.data == 'refreshcss') refreshCSS();
+                };
+                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                    console.log('Live reload enabled.');
+                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                }
+            })();
+        }
+        else {
+            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+        }
+        // ]]>
+    </script>
+</body>
+
+</html>
