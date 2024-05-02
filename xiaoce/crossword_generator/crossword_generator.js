@@ -39,11 +39,13 @@ function addText() {
 }
 
 function undo() {
+    const svg = document.getElementById('svg');
     if (addedTexts.length > 0) {
-        const lastText = addedTexts.pop();
-        lastText.remove();
-    } else {
-        alert("No text to undo!");
+        const lastTextId = addedTexts.pop().id;
+        const lastTextElement = document.getElementById(lastTextId);
+        if (lastTextElement) {
+            svg.removeChild(lastTextElement);
+        }
     }
 }
 
