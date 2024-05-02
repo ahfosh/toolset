@@ -5,138 +5,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ahfosh - Personal Webpage</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f2f2f2;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            flex-direction: column;
-        }
-
-        header,
-        footer {
-            background-color: #222;
-            color: #fff;
-            text-align: center;
-            padding: 1.5%;
-        }
-
-        h1,
-        h2,
-        p {
-            margin: 0;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .container {
-            width: 95%;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        #searchForm {
-            text-align: center;
-            margin: 10vh auto;
-        }
-
-        #searchQuery {
-            padding: 10px;
-            border-radius: 25px;
-            border: none;
-            background-color: #f9f9f9;
-            width: 300px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease-in-out;
-            outline: none;
-        }
-
-        #searchEngineButton {
-            width: 75px;
-        }
-
-        #searchEngineButton,
-        .quick-link,
-        input[type="submit"] {
-            vertical-align: baseline;
-            display: inline-block;
-            padding: 10px 15px;
-            margin: 5px;
-            background-color: black;
-            color: #fff;
-            border-radius: 25px;
-            text-decoration: none;
-            border: none;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease-in-out;
-        }
-
-        #searchEngineButton:hover,
-        #searchQuery:focus,
-        .quick-link:hover,
-        input[type="submit"]:hover {
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
-            transition: box-shadow 0.3s ease-in-out;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 
 <body>
-
     <header>
         <h1>Welcome to ahfosh's Personal Webpage</h1>
     </header>
 
-    <main>
-        <form action="" id="searchForm">
-            <button type="button" id="searchEngineButton">Baidu</button>
-            <input type="text" id="searchQuery" name="query" placeholder="Finding...">
-            <input type="submit" value="Search">
-        </form>
+    <form action="" id="searchForm">
+        <button type="button" id="searchEngineButton">Baidu</button>
+        <input type="text" id="searchQuery" name="query" placeholder="Finding...">
+        <input type="submit" value="Search">
+    </form>
 
-        <div class="container">
-            <h2>友情链接</h2>
-            <p>
-                <a class="quick-link" href="https://www.yuque.com/chaofun/">语雀文档</a>
-                <a class="quick-link" href="https://tuxun.fun/">图寻</a>
-                <a class="quick-link" href="https://xiaoce.fun/">小测验</a>
-                <a class="quick-link" href="https://choa.fun/f/84">网络迷踪</a>
-                <a class="quick-link" href="tools_recommendation.html">工具推荐</a>
-            </p>
-        </div>
+    <div class="container">
+        <h2>友情链接</h2>
+        <p>
+            <a class="quick-link" href="https://www.yuque.com/chaofun/">语雀文档</a>
+            <a class="quick-link" href="https://tuxun.fun/">图寻</a>
+            <a class="quick-link" href="https://xiaoce.fun/">小测验</a>
+            <a class="quick-link" href="https://choa.fun/f/84">网络迷踪</a>
+            <a class="quick-link" href="tools_recommendation.html">工具推荐</a>
+        </p>
+    </div>
 
-        <div class="container">
-            <h2>本站工具</h2>
-            <p>
-                <a class="quick-link" href="chaofun/comments.html">赛事报名统计</a>
-                <a class="quick-link" href="xiaoce/svg_extractor.html">SVGid提取</a>
-                <a class="quick-link" href="xiaoce/toponymic_abbreviation.html">全名转专名</a>
-                <a class="quick-link" href="rank/creator.html">测验创作者排行</a>
-                <a class="quick-link" href="rank/simplified.html">图寻积分排行</a>
-                <a class="quick-link" href="download/tianditu.zip">天地图中国区划</a>
-            </p>
-        </div>
+    <div class="container">
+        <h2>本站工具</h2>
+        <p>
+            <a class="quick-link" href="chaofun/comments.html">赛事报名统计</a>
+            <a class="quick-link" href="xiaoce/svg_extractor.html">SVGid提取</a>
+            <a class="quick-link" href="xiaoce/toponymic_abbreviation.html">全名转专名</a>
+            <a class="quick-link" href="rank/creator.html">测验创作者排行</a>
+            <a class="quick-link" href="rank/simplified.html">图寻积分排行</a>
+            <a class="quick-link" href="download/tianditu.zip">天地图中国区划</a>
+        </p>
+    </div>
 
-        <div class="container">
-            <h2>知识测验</h2>
-            <p>
-                <a class="quick-link" href="test/silhouettes/">政区轮廓</a>
-                <a class="quick-link" href="test/click/">政区点选</a>
-                <a class="quick-link" href="test/administration/">政区归属</a>
-                <a class="quick-link" href="test/code/">电话区号</a>
-            </p>
-        </div>
-    </main>
+    <div class="container">
+        <h2>知识测验</h2>
+        <p>
+            <a class="quick-link" href="test/silhouettes/">政区轮廓</a>
+            <a class="quick-link" href="test/click/">政区点选</a>
+            <a class="quick-link" href="test/administration/">政区归属</a>
+            <a class="quick-link" href="test/code/">电话区号</a>
+        </p>
+    </div>
 
     <footer>
         <p>&copy; 2019-2024 ahfosh_studio. All Rights Reserved.
