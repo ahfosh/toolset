@@ -22,7 +22,12 @@
         <button onclick="exportSVG()">Export</button>
     </div>
 
-    <div id="inputText"></div>
+    <div id="inputText">
+        <button onclick="selectCells()">Select Cells</button>
+        <input type="text" id="insertText" style="display: none;">
+        <button onclick="addCharacters()" style="display: none;">Add Characters</button>
+    </div>
+
     <div id="svg-container"></div>
 
     <footer>

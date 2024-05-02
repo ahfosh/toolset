@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>SVG属性提取工具</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="svg_extractor.css">
+</head>
+
+<body>
+    <div class="hint" id="hint">复制成功</div>
+
+    <div class="container">
+        <h1>SVG属性提取工具</h1>
+
+        <label for="svgFile">选择SVG文件</label>
+        <input type="file" id="svgFile" accept=".svg">
+
+        <label for="pathType">选择要提取的标签类型：</label>
+        <select id="pathType">
+            <option value="g">g 组(group)</option>
+            <option value="path">path 路径</option>
+            <option value="circle">circle 圆形</option>
+            <option value="ellipse">ellipse 椭圆</option>
+            <option value="line">line 直线</option>
+            <option value="polygon">polygon 多边形</option>
+            <option value="polyline">polyline 多段线</option>
+            <option value="rect">rect 矩形</option>
+            <option value="text">text 文本</option>
+        </select>
+
+        <label for="displayType">选择显示类型：</label>
+        <select id="displayType">
+            <option value="text">文本</option>
+            <option value="table">表格</option>
+        </select>
+
+        <label for="answerParam">输入答案参数：</label>
+        <input type="text" id="answerParam">
+
+        <button id="extractBtn">提取路径</button>
+        <button id="copyBtn">复制全部</button>
+
+        <p class="total-ids" style="text-align:center;">总ID数：<span id="totalIdsText">0</span></p>
+
+        <div id="textDisplay" style="display: none;">
+            <ul id="pathList"></ul>
+        </div>
+
+        <div id="tableDisplay" style="display: none;">
+            <table id="pathTable">
+                <tr>
+                    <th>类型</th>
+                    <th>ID</th>
+                    <th>标题</th>
+                </tr>
+            </table>
+        </div>
+
+        <script src="svg_extractor.js"></script>
+</body>
+
+</html>
