@@ -79,7 +79,7 @@ input {
 button {
     vertical-align: baseline;
     display: inline-block;
-    padding: 10px 15px;
+    padding: 10px;
     margin: 5px;
     background-color: black;
     color: #fff;
