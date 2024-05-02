@@ -4,35 +4,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QQ聊天记录处理</title>
+    <title>物价竞猜统计工具</title>
     <style>
-        table {
+        html,
+        body {
+            height: 100%;
             width: 100%;
-            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+            color: #333;
+            border: 0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header,
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 2.5vh;
+        }
+
+        header {
+            margin-bottom: auto;
+        }
+
+        footer {
+            margin-top: auto;
+        }
+
+        h1,
+        h2,
+        p {
+            margin: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            margin: 2vh;
+            padding: 2vh;
+            background-color: #fff;
+            border-radius: 1vw;
+            box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        textarea {
+            width: 30vw;
+            padding: 10px;
+            border: none;
+            outline: none;
+            background-color: #f9f9f9;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            border-radius: 2.5vw;
+            border: none;
+            outline: none;
+            background-color: #f9f9f9;
+            width: 5vw;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        button {
+            vertical-align: baseline;
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 5px;
+            background-color: black;
+            color: #fff;
+            max-width: max-content;
+            border-radius: 25px;
+            text-decoration: none;
+            border: none;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        button:hover {
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        table {
+            margin: 0 auto;
+            width: 30vw;
+            border: none;
+            outline: none;
+            background-color: #f9f9f9;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
         }
 
         th,
         td {
+            min-width: max-content;
             border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
+            padding: auto;
         }
 
         th {
             background-color: #f2f2f2;
         }
+
+        #output p {
+            font-weight: bold;
+        }
     </style>
 </head>
 
 <body>
+    <header>
+        <h1>物价竞猜统计工具</h1>
+    </header>
 
-    <h2>QQ聊天记录处理</h2>
+    <div class="container">
+        <textarea id="chatRecord" rows="20" placeholder="粘贴聊天记录到这里" autofocus></textarea>
+        <br>
+        <label for="standardNumber">实际物价</label>
+        <input type="number" id="standardNumber">
+        <button onclick="processChatRecord()">计算</button>
+        <div id="output"></div>
+    </div>
 
-    <textarea id="chatRecord" rows="10" cols="50"></textarea><br>
-    标准数字: <input type="number" id="standardNumber">
-    <button onclick="processChatRecord()">处理</button>
-
-    <div id="output"></div>
+    <footer>
+        <p>&copy; 2019-2024 ahfosh_studio. All Rights Reserved.
+            Website based on <a href="https://github.com/ahfosh/toolset">ahfosh's toolset</a></p>
+    </footer>
 
     <script>
         function processChatRecord() {
@@ -43,13 +157,13 @@
             var messages = [];
 
             while ((match = regex.exec(chatRecord)) !== null) {
-                var sender = match[1];
+                var level = match[1];
                 var username = match[2];
                 var time = match[3];
                 var content = match[4].trim();
 
                 var message = {
-                    sender: sender,
+                    level: level,
                     username: username,
                     time: time,
                     content: content
@@ -68,13 +182,13 @@
             outputDiv.innerHTML = "";
 
             if (messages.length === 0) {
-                outputDiv.innerHTML = "未找到完全由数字组成的消息。";
+                outputDiv.innerHTML = "<p>未找到完全由数字组成的消息。</p>";
                 return;
             }
 
             var table = document.createElement("table");
             var headerRow = table.insertRow();
-            var headers = ["发送者", "用户名", "时间", "内容", "与标准数字差值"];
+            var headers = ["等级", "昵称", "时间", "内容", "差值"];
 
             for (var i = 0; i < headers.length; i++) {
                 var header = document.createElement("th");
@@ -88,17 +202,17 @@
             for (var j = 0; j < messages.length; j++) {
                 var message = messages[j];
                 var row = table.insertRow();
-                row.insertCell().textContent = message.sender;
+                row.insertCell().textContent = message.level;
                 row.insertCell().textContent = message.username;
                 row.insertCell().textContent = message.time;
                 row.insertCell().textContent = message.content;
 
                 var number = parseFloat(message.content);
-                var difference = Math.abs(number - standardNumber);
+                var difference = number - standardNumber;
+                var differenceText = difference.toFixed(2);
+                row.insertCell().textContent = differenceText;
 
-                row.insertCell().textContent = difference.toFixed(2);
-
-                if (difference < minDifference) {
+                if (Math.abs(difference) < Math.abs(minDifference)) {
                     minDifference = difference;
                     minDifferenceMessage = message;
                 }
@@ -108,49 +222,12 @@
 
             if (minDifferenceMessage) {
                 var minDifferenceOutput = document.createElement("p");
-                minDifferenceOutput.textContent = "与标准数字差值最小的消息来自于 " + minDifferenceMessage.sender + "，用户名为：" + minDifferenceMessage.username + "，内容为：" + minDifferenceMessage.content + "，差值为：" + minDifference.toFixed(2);
+                var difference = minDifference.toFixed(2);
+                var diffText = difference > 0 ? " 大了 " : " 小了 ";
+                minDifferenceOutput.textContent = "最优者是" + minDifferenceMessage.username + "，其所猜价格 " + minDifferenceMessage.content + " 比实际价格 " + standardNumber + diffText + Math.abs(difference);
                 outputDiv.appendChild(minDifferenceOutput);
             }
         }
-    </script>
-
-    <!-- Code injected by live-server -->
-    <script>
-        // <![CDATA[  <-- For SVG support
-        if ('WebSocket' in window) {
-            (function () {
-                function refreshCSS() {
-                    var sheets = [].slice.call(document.getElementsByTagName("link"));
-                    var head = document.getElementsByTagName("head")[0];
-                    for (var i = 0; i < sheets.length; ++i) {
-                        var elem = sheets[i];
-                        var parent = elem.parentElement || head;
-                        parent.removeChild(elem);
-                        var rel = elem.rel;
-                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-                        }
-                        parent.appendChild(elem);
-                    }
-                }
-                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-                var address = protocol + window.location.host + window.location.pathname + '/ws';
-                var socket = new WebSocket(address);
-                socket.onmessage = function (msg) {
-                    if (msg.data == 'reload') window.location.reload();
-                    else if (msg.data == 'refreshcss') refreshCSS();
-                };
-                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-                    console.log('Live reload enabled.');
-                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-                }
-            })();
-        }
-        else {
-            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-        }
-        // ]]>
     </script>
 </body>
 
