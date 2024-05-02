@@ -41,7 +41,7 @@ $(document).ready(function () {
                 })
                 title = title.slice(0, -1)
             }
-            ret.push({ "type": $(this).prop("tagName"), "id": id, "name": title })
+            ret.push({ "id": id, "name": title })
         })
         return ret
     }
@@ -65,12 +65,12 @@ $(document).ready(function () {
                 var pathDis = displayType == "text" ? pathList : pathTable
                 var nonPathDis = displayType == "table" ? pathList : pathTable
                 var dic = {
-                    "text": "<li>TYPE,ID,TITLE</li>",
-                    "table": "<tr><td>TYPE</td><td>ID</td><td>TITLE</td></tr>"
+                    "text": "<li>ID,TITLE</li>",
+                    "table": "<tr><td>ID</td><td>TITLE</td></tr>"
                 }
                 parsedElements.forEach(function (e) {
-                    pathDis.append(dic[displayType].replace('TYPE', e.type).replace('ID', e.id).replace('TITLE', e.name));
-                    copyText += `${e.type},${e.id},${e.name}\n`
+                    pathDis.append(dic[displayType].replace('ID', e.id).replace('TITLE', e.name));
+                    copyText += `${e.id},${e.name}\n`
                     totalIds++
                 });
                 $("#tableDisplay").hide();
