@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>腾蛟之洋 起凤之海 - 海图</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+            color: #333;
+            border: 0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header,
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 2.5vh;
+        }
+
+        header {
+            margin-bottom: auto;
+        }
+
+        footer {
+            margin-top: auto;
+        }
+
+        h1,
+        h2,
+        p {
+            margin: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            margin: 1vh 1vw;
+            padding: 2vh;
+            background-color: #fff;
+            border-radius: 1vw;
+            box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #output{
+            margin: 1vh auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 2vh auto;
+            background-color: #ffffff;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 25px;
+            border: none;
+            background-color: #f9f9f9;
+            width: 10 vw;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+            outline: none;
+            text-align: center;
+        }
+
+        input:hover {
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        button {
+            vertical-align: baseline;
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: black;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        button:hover {
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+            transition: box-shadow 0.3s ease-in-out;
+            vertical-align: baseline;
+        }
+
+        #before,
+        #after {
+            font-size: larger;
+        }
+
+        #before,
+        #after,
+        #initial,
+        #final {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>腾蛟之洋 起凤之海 - 海图</h1>
+    </header>
+
+    <div class="container">
+        <input type="text" id="inputModule" placeholder="靠泊岛屿">
+        <button onclick="queryNextModule()">下一站是</button>
+        <div id="output">前路一片迷惘……</div>
+
+        <table>
+            <tr id="before">
+                <td colspan="5">晨曦之国 启航之城</td>
+            </tr>
+            <tr id="initial">
+                <td>哲学</td>
+                <td>数学</td>
+                <td>绘画</td>
+                <td>能源</td>
+                <td>体育</td>
+            </tr>
+            <tr>
+                <td>中文</td>
+                <td>经济</td>
+                <td>影视</td>
+                <td>土建</td>
+                <td>美食</td>
+            </tr>
+            <tr>
+                <td>外文</td>
+                <td>物理</td>
+                <td>雕塑</td>
+                <td>水利</td>
+                <td>宠物</td>
+            </tr>
+            <tr>
+                <td>宗教</td>
+                <td>化学</td>
+                <td>书法</td>
+                <td>电工</td>
+                <td>汽车</td>
+            </tr>
+            <tr>
+                <td>民俗</td>
+                <td>生物</td>
+                <td>建筑</td>
+                <td>电信</td>
+                <td>数码</td>
+            </tr>
+            <tr>
+                <td>政治</td>
+                <td>地科</td>
+                <td>音乐</td>
+                <td>化工</td>
+                <td>家居</td>
+            </tr>
+            <tr>
+                <td>历史</td>
+                <td>天文</td>
+                <td>舞蹈</td>
+                <td>交通</td>
+                <td>情感</td>
+            </tr>
+            <tr>
+                <td>法律</td>
+                <td>医药</td>
+                <td>动画</td>
+                <td>军事</td>
+                <td>旅游</td>
+            </tr>
+            <tr>
+                <td>地理</td>
+                <td>心理</td>
+                <td>游戏</td>
+                <td>农业</td>
+                <td>时尚</td>
+            </tr>
+            <tr>
+                <td>社科</td>
+                <td>信息</td>
+                <td>文学</td>
+                <td>机械</td>
+                <td>两性</td>
+            </tr>
+            <tr id="final">
+                <td>人文</td>
+                <td>理数</td>
+                <td>艺术</td>
+                <td>技工</td>
+                <td>生活</td>
+            </tr>
+            <tr id="after">
+                <td colspan="5">终焉之地 真理之洲</td>
+            </tr>
+        </table>
+    </div>
+
+    <footer>
+        <p>&copy; 2019-2024 ahfosh_studio. All Rights Reserved.
+            Website based on <a href="https://github.com/ahfosh/toolset">ahfosh's toolset</a></p>
+    </footer>
+
+    <script>
+        function queryNextModule() {
+            var searchTerm = document.getElementById("inputModule").value.trim().toLowerCase();
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var csvData = this.responseText;
+                    var csvArray = csvData.split("\n");
+                    var output = "";
+                    var found = false;
+                    for (var i = 0; i < csvArray.length; i++) {
+                        var row = csvArray[i].split(",");
+                        if (found && row[0].trim().toLowerCase() !== searchTerm) {
+                            break;
+                        }
+                        if (row[0].trim().toLowerCase() === searchTerm) {
+                            found = true;
+                        }
+                        if (found) {
+                            output += "<p>" + row.slice(1).join(", ") + "</p>"; // Exclude the first column
+                        }
+                    }
+                    if (output === "") {
+                        output = "No matching data found";
+                    }
+                    document.getElementById("output").innerHTML = output;
+                }
+            };
+            xhttp.open("GET", "modules.csv", true);
+            xhttp.send();
+        }
+    </script>
+</body>
+
+</html>
