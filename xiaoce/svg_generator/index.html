@@ -3,23 +3,22 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>SVG Path Finder</title>
+    <title>中国政区SVG生成器</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <div class="container">
-        <h1>SVG Path Finder</h1>
-        <p>输入地名（全名或简称），用逗号、换行、斜杠、空格或顿号分隔：</p>
-        <textarea id="placeNames" placeholder="例如：北京, 上海、广州、深圳 / BJ, SH, GZ, SZ"></textarea>
-        <br><br>
-        <button onclick="processFiles()">处理文件</button>
+        <h1>中国政区SVG生成器</h1>
+        <p>输入政区名（全名或简称），用逗号、换行、斜杠、空格或顿号分隔：</p>
+        <textarea id="placeNames" placeholder="例如：沈阳市，长春、哈尔滨市/石家庄市；目前仅接受地级行政区"></textarea>
+        <button onclick="processFiles()">处理</button>
     </div>
 
-    <div class="preview-container">
+    <div class="preview-container" id="previewContainer" style="display:none;">
         <h2>预览待导出的SVG</h2>
         <div id="previewSVG" class="svg-preview"></div>
-        <a id="downloadLink" style="display:none;">下载结果SVG</a>
+        <a id="downloadLink">下载结果SVG</a>
     </div>
 
     <script src="script.js"></script>

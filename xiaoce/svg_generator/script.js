@@ -140,8 +140,9 @@ function createDownloadLink(svgData) {
     const blob = new Blob([svgData], { type: 'image/svg+xml' });
     const url = URL.createObjectURL(blob);
     const link = document.getElementById('downloadLink');
+    const container = document.getElementById('previewContainer');
+    container.style.display = 'block';
     link.href = url;
     link.download = 'result.svg';
-    link.style.display = 'block';
     link.innerText = '下载结果SVG';
 }
