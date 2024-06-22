@@ -3,8 +3,8 @@ function processFiles() {
     const svgFileName = 'svg.svg';
     const placeNamesInput = document.getElementById('placeNames').value;
 
-    // 支持逗号、换行、斜杠、空格、顿号作为分隔符，并去除重复项
-    const placeNames = [...new Set(placeNamesInput.split(/,|\n|\/|\s|、/).map(name => name.trim()))];
+    // 使用正则表达式匹配地名
+    const placeNames = extractPlaceNames(placeNamesInput);
 
     if (placeNames.length === 0) {
         alert('请输入至少一个地名。');
@@ -14,8 +14,9 @@ function processFiles() {
     readCSV(csvFileName).then(csvData => {
         const pathIds = getPathIdsFromCSV(csvData, placeNames);
         readSVG(svgFileName).then(svgData => {
-            const resultSVG = filterSVG(svgData, pathIds);
-            createDownloadLink(resultSVG);
+            const resultSVG = filterAndStyleSVG(svgData, pathIds);
+            displayPreview(resultSVG); // 显示预览
+            createDownloadLink(resultSVG); // 创建下载链接
         });
     }).catch(error => {
         console.error('处理文件时出错：', error);
@@ -23,12 +24,22 @@ function processFiles() {
     });
 }
 
+function extractPlaceNames(inputText) {
+    const placeNames = [];
+    const regex = /[^\s,，\/、]+/g; // 匹配不包含空格、逗号、斜杠、顿号的连续字符
+    let match;
+    while ((match = regex.exec(inputText)) !== null) {
+        placeNames.push(match[0]);
+    }
+    return placeNames;
+}
+
 function readCSV(fileName) {
     return new Promise((resolve, reject) => {
         fetch(fileName)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error(`Failed to fetch ${fileName}`);
+                    throw new Error(`无法获取 ${fileName}`);
                 }
                 return response.text();
             })
@@ -44,10 +55,15 @@ function parseCSV(text) {
     const rows = text.split('\n');
     const data = {};
     rows.forEach(row => {
-        const [id, fullName, shortName] = row.split(',');
-        if (id && fullName && shortName) {
+        const [id, fullName, shortNames] = row.split(',');
+        if (id && fullName) {
             data[fullName.trim()] = id.trim(); // 使用全名作为键
-            data[shortName.trim()] = id.trim(); // 使用简称作为键
+            if (shortNames) {
+                const shortNamesArray = shortNames.split('/');
+                shortNamesArray.forEach(short => {
+                    data[short.trim()] = id.trim(); // 使用简称作为键
+                });
+            }
         }
     });
     return data;
@@ -61,31 +77,50 @@ function readSVG(fileName) {
     return fetch(fileName)
         .then(response => {
             if (!response.ok) {
-                throw new Error(`Failed to fetch ${fileName}`);
+                throw new Error(`无法读取 ${fileName}`);
             }
             return response.text();
         })
         .catch(error => {
-            console.error('Failed to read SVG file:', error);
+            console.error('读取SVG文件时出错:', error);
             alert('读取SVG文件时出错，请检查控制台获取更多信息。');
         });
 }
 
-function filterSVG(svgData, pathIds) {
+function filterAndStyleSVG(svgData, pathIds) {
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(svgData, "image/svg+xml");
     const svgElement = xmlDoc.getElementsByTagName('svg')[0];
 
+    // 创建一个新的SVG元素
     const newSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     newSVG.setAttribute("viewBox", svgElement.getAttribute("viewBox"));
     newSVG.setAttribute("width", svgElement.getAttribute("width"));
     newSVG.setAttribute("height", svgElement.getAttribute("height"));
 
-    pathIds.forEach(id => {
-        const pathElement = xmlDoc.getElementById(id);
-        if (pathElement) {
-            newSVG.appendChild(pathElement.cloneNode(true));
+    // 遍历原SVG的所有路径，先将不匹配的路径添加，再将匹配的路径添加到最底部
+    const allPaths = svgElement.getElementsByTagName('path');
+    let matchedPaths = [];
+
+    Array.from(allPaths).forEach(path => {
+        const pathElement = path.cloneNode(true);
+        if (pathIds.includes(pathElement.id)) {
+            // 匹配的路径
+            pathElement.setAttribute('stroke', 'black');
+            pathElement.setAttribute('fill', 'white');
+            // 匹配的路径，暂时存储
+            matchedPaths.push(pathElement);
+        } else {
+            // 不匹配的路径
+            pathElement.setAttribute('fill', 'gray');
+            // 不匹配的路径，直接添加到新SVG中
+            newSVG.appendChild(pathElement);
         }
+    });
+
+    // 将匹配的路径添加到最底部
+    matchedPaths.forEach(path => {
+        newSVG.appendChild(path);
     });
 
     return newXMLString(newSVG);
