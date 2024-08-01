@@ -1,107 +1,119 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ahfosh - Personal Webpage</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1>Welcome to ahfosh's Personal Webpage</h1>
+      <h1>Welcome to ahfosh's Personal Webpage</h1>
     </header>
 
     <form action="" id="searchForm">
-        <button type="button" id="searchEngineButton">Baidu</button>
-        <input type="text" id="searchQuery" name="query" placeholder="Finding...">
-        <input type="submit" value="Search">
+      <button type="button" id="searchEngineButton">Baidu</button>
+      <input
+        type="text"
+        id="searchQuery"
+        name="query"
+        placeholder="Finding..."
+      />
+      <input type="submit" value="Search" />
     </form>
 
     <div class="container">
-        <h2>友情链接</h2>
-        <p>
-            <a class="quick-link" href="https://www.yuque.com/chaofun/">语雀文档</a>
-            <a class="quick-link" href="https://tuxun.fun/">图寻</a>
-            <a class="quick-link" href="https://xiaoce.fun/">小测验</a>
-            <a class="quick-link" href="https://choa.fun/f/84">网络迷踪</a>
-            <a class="quick-link" href="tools_recommendation.html">工具推荐</a>
-        </p>
+      <h2>友情链接</h2>
+      <p>
+        <a class="quick-link" href="https://www.yuque.com/chaofun/">语雀文档</a>
+        <a class="quick-link" href="https://tuxun.fun/">图寻</a>
+        <a class="quick-link" href="https://xiaoce.fun/">小测验</a>
+        <a class="quick-link" href="https://choa.fun/f/84">网络迷踪</a>
+        <a class="quick-link" href="tools_recommendation.html">工具推荐</a>
+      </p>
     </div>
 
     <div class="container">
-        <h2>处理工具</h2>
-        <p>
-            <a class="quick-link" href="chaofun/comments.html">赛事报名统计</a>
-            <a class="quick-link" href="chaofun/price_guess.html">物价竞猜统计</a>
-            <a class="quick-link" href="xiaoce/svg_extractor/">SVGid提取</a>
-            <a class="quick-link" href="xiaoce/svg_generator/">SVG地区生成器</a>
-            <a class="quick-link" href="xiaoce/toponymic_abbreviation.html">全名转专名</a>
-        </p>
+      <h2>处理工具</h2>
+      <p>
+        <a class="quick-link" href="chaofun/comments.html">赛事报名统计</a>
+        <a class="quick-link" href="chaofun/price_guess.html">物价竞猜统计</a>
+        <a class="quick-link" href="xiaoce/svg_extractor/">SVGid提取</a>
+        <a class="quick-link" href="xiaoce/svg_generator/">SVG地区生成器</a>
+        <a class="quick-link" href="xiaoce/toponymic_abbreviation.html"
+          >全名转专名</a
+        >
+      </p>
     </div>
 
     <div class="container">
-        <h2>内容资源</h2>
-        <p>
-            <a class="quick-link" href="rank/creator.html">测验创作者排行</a>
-            <a class="quick-link" href="rank/simplified.html">图寻积分排行</a>
-            <a class="quick-link" href="download/tianditu.zip">天地图中国区划</a>
-        </p>
+      <h2>内容资源</h2>
+      <p>
+        <a class="quick-link" href="rank/creator.html">测验创作者排行</a>
+        <a class="quick-link" href="rank/simplified.html">图寻积分排行</a>
+        <a class="quick-link" href="language/py2ipa.html">拼音与音标互转</a>
+      </p>
     </div>
 
     <div class="container">
-        <h2>知识测验</h2>
-        <p>
-            <a class="quick-link" href="test/silhouettes/">政区轮廓</a>
-            <a class="quick-link" href="test/click/">政区点选</a>
-            <a class="quick-link" href="test/administration/">政区归属</a>
-            <a class="quick-link" href="test/code/">电话区号</a>
-        </p>
+      <h2>知识测验</h2>
+      <p>
+        <a class="quick-link" href="test/silhouettes/">政区轮廓</a>
+        <a class="quick-link" href="test/click/">政区点选</a>
+        <a class="quick-link" href="test/administration/">政区归属</a>
+        <a class="quick-link" href="test/code/">电话区号</a>
+      </p>
     </div>
 
     <footer>
-        <p>&copy; 2019-2024 ahfosh_studio. All Rights Reserved.
-            Website based on <a href="https://github.com/ahfosh/toolset">ahfosh's toolset</a></p>
+      <p>
+        &copy; 2019-2024 ahfosh_studio. All Rights Reserved. Website based on
+        <a href="https://github.com/ahfosh/toolset">ahfosh's toolset</a>
+      </p>
     </footer>
 
     <script>
-        var currentSearchEngine = "baidu";
+      var currentSearchEngine = "baidu";
 
-        var searchEngineButton = document.getElementById("searchEngineButton");
+      var searchEngineButton = document.getElementById("searchEngineButton");
 
-        searchEngineButton.addEventListener("click", function () {
-            if (currentSearchEngine === "baidu") {
-                currentSearchEngine = "google";
-                this.textContent = "Google";
-            } else if (currentSearchEngine === "google") {
-                currentSearchEngine = "bing";
-                this.textContent = "Bing";
-            } else if (currentSearchEngine === "bing") {
-                currentSearchEngine = "baidu";
-                this.textContent = "Baidu";
-            }
+      searchEngineButton.addEventListener("click", function () {
+        if (currentSearchEngine === "baidu") {
+          currentSearchEngine = "google";
+          this.textContent = "Google";
+        } else if (currentSearchEngine === "google") {
+          currentSearchEngine = "bing";
+          this.textContent = "Bing";
+        } else if (currentSearchEngine === "bing") {
+          currentSearchEngine = "baidu";
+          this.textContent = "Baidu";
+        }
+      });
+
+      document
+        .getElementById("searchForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          var query = document.getElementById("searchQuery").value;
+          if (currentSearchEngine === "baidu") {
+            window.location.href =
+              "https://www.baidu.com/s?wd=" + encodeURIComponent(query);
+          } else if (currentSearchEngine === "google") {
+            window.location.href =
+              "https://www.google.com/search?q=" + encodeURIComponent(query);
+          } else if (currentSearchEngine === "bing") {
+            window.location.href =
+              "https://www.bing.com/search?q=" + encodeURIComponent(query);
+          }
         });
 
-        document.getElementById("searchForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-            var query = document.getElementById("searchQuery").value;
-            if (currentSearchEngine === "baidu") {
-                window.location.href = "https://www.baidu.com/s?wd=" + encodeURIComponent(query);
-            } else if (currentSearchEngine === "google") {
-                window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
-            } else if (currentSearchEngine === "bing") {
-                window.location.href = "https://www.bing.com/search?q=" + encodeURIComponent(query);
-            }
-        });
-
-        window.onload = function () {
-            var links = document.getElementsByTagName('a');
-            for (var i = 0; i < links.length; i++) {
-                links[i].setAttribute('target', '_blank');
-            }
-        };
+      window.onload = function () {
+        var links = document.getElementsByTagName("a");
+        for (var i = 0; i < links.length; i++) {
+          links[i].setAttribute("target", "_blank");
+        }
+      };
     </script>
-</body>
-
+  </body>
 </html>
