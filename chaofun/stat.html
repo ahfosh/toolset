@@ -1,217 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>抢答得分统计</title>
     <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+      body {
+        font-family: Arial, sans-serif;
+      }
 
-        th,
-        td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+      .container {
+        display: flex;
+        justify-content: space-between;
+      }
 
-        input[type=text] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            box-sizing: border-box;
-        }
+      .column {
+        flex: 1;
+        padding: 10px;
+      }
 
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-        }
+      h2,
+      h3 {
+        margin: 0;
+      }
 
-        button:hover {
-            opacity: 0.8;
-        }
+      table {
+        margin: 10px 0;
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 4px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 10px 0;
+        box-sizing: border-box;
+      }
+
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 8px 15px;
+        border: none;
+        cursor: pointer;
+        margin: 3px;
+      }
+
+      button:hover {
+        opacity: 0.8;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
+    <div class="container">
+      <!-- Score Tracking Section -->
+      <div class="column">
+        <h2>得分统计</h2>
 
-    <h2>个人抢答得分统计</h2>
+        <input
+          type="text"
+          id="playerName"
+          placeholder="输入选手姓名，以@符号分隔"
+        />
+        <button onclick="addPlayers()">添加选手</button>
+        <button onclick="clearAll()">清空缓存</button>
+        <button onclick="sortTable('asc')">按得分升序</button>
+        <button onclick="sortTable('desc')">按得分降序</button>
+        <button onclick="restoreOrder()">恢复顺序</button>
 
-    <input type="text" id="playerName" placeholder="输入选手姓名，以@符号分隔">
-    <button onclick="addPlayers()">添加选手</button>
-    <button onclick="clearAll()">清空缓存</button>
-    <button onclick="sortTable('asc')">按得分升序</button>
-    <button onclick="sortTable('desc')">按得分降序</button>
-    <button onclick="restoreOrder()">恢复顺序</button>
-
-    <table id="scoreTable">
-        <tr>
+        <table id="scoreTable">
+          <tr>
             <th>选手</th>
             <th>得分</th>
             <th>操作</th>
-        </tr>
-    </table>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Timer Section -->
+      <div class="column">
+        <h2>计时器</h2>
+        <label for="timerMode">选择模式：</label>
+        <select id="timerMode">
+          <option value="stopwatch">秒表</option>
+          <option value="countdown">倒计时</option>
+        </select>
+        <input
+          type="text"
+          id="countdownInput"
+          placeholder="输入倒计时时间 (秒)"
+        />
+        <div id="timerDisplay">00:00:00.000</div>
+        <button onclick="startTimer()">开始</button>
+        <button onclick="pauseTimer()">暂停</button>
+        <button onclick="resetTimer()">停止</button>
+        <button onclick="lapTimer()">分段时间</button>
+        <div class="laps" id="lapsContainer"></div>
+      </div>
+    </div>
 
     <script>
-        // Check if localStorage is available
-        function isLocalStorageAvailable() {
-            try {
-                localStorage.setItem("test", "test");
-                localStorage.removeItem("test");
-                return true;
-            } catch (e) {
-                return false;
+      // Check if localStorage is available
+      function isLocalStorageAvailable() {
+        try {
+          localStorage.setItem("test", "test");
+          localStorage.removeItem("test");
+          return true;
+        } catch (e) {
+          return false;
+        }
+      }
+
+      // Function to add multiple players to the score table
+      function addPlayers() {
+        var playersInput = document.getElementById("playerName").value.trim();
+        if (playersInput === "") {
+          alert("请输入选手姓名！");
+          return;
+        }
+        var playerNames = playersInput.split(" ");
+        var table = document.getElementById("scoreTable");
+        for (var i = 0; i < playerNames.length; i++) {
+          var playerName = playerNames[i].replace("@", "");
+          if (playerName !== "") {
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            cell1.innerHTML = playerName;
+            cell2.innerHTML = 0;
+            cell3.innerHTML = `<button onclick="incrementScore(this)">+1分</button> <button onclick="decrementScore(this)">-1分</button> <button onclick="deletePlayer(this)">删除选手</button>`;
+          }
+        }
+        saveToLocalStorage();
+        document.getElementById("playerName").value = "";
+      }
+
+      // Function to increment score
+      function incrementScore(button) {
+        var row = button.parentNode.parentNode;
+        var scoreCell = row.cells[1];
+        var score = parseInt(scoreCell.innerHTML);
+        score++;
+        scoreCell.innerHTML = score;
+        saveToLocalStorage();
+      }
+
+      // Function to decrement score
+      function decrementScore(button) {
+        var row = button.parentNode.parentNode;
+        var scoreCell = row.cells[1];
+        var score = parseInt(scoreCell.innerHTML);
+        if (score > 0) {
+          score--;
+          scoreCell.innerHTML = score;
+          saveToLocalStorage();
+        }
+      }
+
+      // Function to delete player
+      function deletePlayer(button) {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+        saveToLocalStorage();
+      }
+
+      // Function to clear all players and scores
+      function clearAll() {
+        if (confirm("确定要清空所有选手和得分吗？")) {
+          var table = document.getElementById("scoreTable");
+          while (table.rows.length > 1) {
+            table.deleteRow(1);
+          }
+          localStorage.removeItem("players");
+        }
+      }
+
+      // Function to sort table by score
+      function sortTable(order) {
+        var table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById("scoreTable");
+        switching = true;
+        while (switching) {
+          switching = false;
+          rows = table.rows;
+          for (i = 1; i < rows.length - 1; i++) {
+            shouldSwitch = false;
+            x = parseInt(rows[i].cells[1].innerHTML);
+            y = parseInt(rows[i + 1].cells[1].innerHTML);
+            if ((order === "asc" && x > y) || (order === "desc" && x < y)) {
+              shouldSwitch = true;
+              break;
             }
-        }
-
-        // Function to add multiple players to the score table
-        function addPlayers() {
-            var playersInput = document.getElementById("playerName").value.trim();
-            if (playersInput === "") {
-                alert("请输入选手姓名！");
-                return;
-            }
-            var playerNames = playersInput.split(" ");
-            var table = document.getElementById("scoreTable");
-            for (var i = 0; i < playerNames.length; i++) {
-                var playerName = playerNames[i].replace("@", "");
-                if (playerName !== "") {
-                    var row = table.insertRow(-1);
-                    var cell1 = row.insertCell(0);
-                    var cell2 = row.insertCell(1);
-                    var cell3 = row.insertCell(2);
-                    cell1.innerHTML = playerName;
-                    cell2.innerHTML = 0;
-                    cell3.innerHTML = `<button onclick="incrementScore(this)">+1分</button> <button onclick="decrementScore(this)">-1分</button> <button onclick="deletePlayer(this)">删除选手</button>`;
-                }
-            }
-            saveToLocalStorage();
-            document.getElementById("playerName").value = "";
-        }
-
-        // Function to increment score
-        function incrementScore(button) {
-            var row = button.parentNode.parentNode;
-            var scoreCell = row.cells[1];
-            var score = parseInt(scoreCell.innerHTML);
-            score++;
-            scoreCell.innerHTML = score;
-            saveToLocalStorage();
-        }
-
-        // Function to decrement score
-        function decrementScore(button) {
-            var row = button.parentNode.parentNode;
-            var scoreCell = row.cells[1];
-            var score = parseInt(scoreCell.innerHTML);
-            if (score > 0) {
-                score--;
-                scoreCell.innerHTML = score;
-                saveToLocalStorage();
-            }
-        }
-
-        // Function to delete player
-        function deletePlayer(button) {
-            var row = button.parentNode.parentNode;
-            row.parentNode.removeChild(row);
-            saveToLocalStorage();
-        }
-
-        // Function to clear all players and scores
-        function clearAll() {
-            if (confirm("确定要清空所有选手和得分吗？")) {
-                var table = document.getElementById("scoreTable");
-                while (table.rows.length > 1) {
-                    table.deleteRow(1);
-                }
-                localStorage.removeItem("players");
-            }
-        }
-
-        // Function to sort table by score
-        function sortTable(order) {
-            var table, rows, switching, i, x, y, shouldSwitch;
-            table = document.getElementById("scoreTable");
+          }
+          if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
             switching = true;
-            while (switching) {
-                switching = false;
-                rows = table.rows;
-                for (i = 1; i < (rows.length - 1); i++) {
-                    shouldSwitch = false;
-                    x = parseInt(rows[i].cells[1].innerHTML);
-                    y = parseInt(rows[i + 1].cells[1].innerHTML);
-                    if ((order === 'asc' && x > y) || (order === 'desc' && x < y)) {
-                        shouldSwitch = true;
-                        break;
-                    }
-                }
-                if (shouldSwitch) {
-                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                    switching = true;
-                }
+          }
+        }
+      }
+
+      // Function to restore original order of table
+      function restoreOrder() {
+        var table, rows, i;
+        table = document.getElementById("scoreTable");
+        rows = table.rows;
+        for (i = 1; i < rows.length; i++) {
+          table.appendChild(rows[i]);
+        }
+      }
+
+      // Function to save player and score to localStorage
+      function saveToLocalStorage() {
+        if (isLocalStorageAvailable()) {
+          var players = [];
+          var table = document.getElementById("scoreTable");
+          for (var i = 1; i < table.rows.length; i++) {
+            var playerName = table.rows[i].cells[0].innerHTML;
+            var score = table.rows[i].cells[1].innerHTML;
+            players.push({ name: playerName, score: score });
+          }
+          localStorage.setItem("players", JSON.stringify(players));
+        } else {
+          console.log("localStorage not available!");
+        }
+      }
+
+      // Function to load players and scores from localStorage
+      function loadFromLocalStorage() {
+        if (isLocalStorageAvailable()) {
+          var players = JSON.parse(localStorage.getItem("players"));
+          if (players) {
+            var table = document.getElementById("scoreTable");
+            for (var i = 0; i < players.length; i++) {
+              var row = table.insertRow(-1);
+              var cell1 = row.insertCell(0);
+              var cell2 = row.insertCell(1);
+              var cell3 = row.insertCell(2);
+              cell1.innerHTML = players[i].name;
+              cell2.innerHTML = players[i].score;
+              cell3.innerHTML = `<button onclick="incrementScore(this)">+1分</button> <button onclick="decrementScore(this)">-1分</button> <button onclick="deletePlayer(this)">删除选手</button>`;
             }
+          }
+        } else {
+          console.log("localStorage not available!");
+        }
+      }
+
+      let timerInterval;
+      let timerMode = "stopwatch";
+      let elapsedTime = 0;
+      let isRunning = false;
+      let lapTimes = [];
+      let startTime = 0;
+      let previousTime = 0;
+
+      document
+        .getElementById("timerMode")
+        .addEventListener("change", function () {
+          timerMode = this.value;
+          document.getElementById("countdownInput").style.display =
+            timerMode === "countdown" ? "inline-block" : "none";
+        });
+
+      function formatTime(time) {
+        const hours = Math.floor(time / 3600000);
+        const minutes = Math.floor((time % 3600000) / 60000);
+        const seconds = Math.floor((time % 60000) / 1000);
+        const milliseconds = time % 1000;
+        return (
+          (hours > 9 ? hours : "0" + hours) +
+          ":" +
+          (minutes > 9 ? minutes : "0" + minutes) +
+          ":" +
+          (seconds > 9 ? seconds : "0" + seconds) +
+          "." +
+          (milliseconds > 99
+            ? milliseconds
+            : milliseconds > 9
+            ? "0" + milliseconds
+            : "00" + milliseconds)
+        );
+      }
+
+      function updateTimerDisplay() {
+        document.getElementById("timerDisplay").innerText =
+          formatTime(elapsedTime);
+      }
+
+      function startTimer() {
+        if (isRunning) return;
+
+        if (timerMode === "countdown") {
+          const countdownTime = parseInt(
+            document.getElementById("countdownInput").value
+          );
+          if (isNaN(countdownTime) || countdownTime <= 0) {
+            alert("请输入有效的倒计时时间！");
+            return;
+          }
+          elapsedTime = countdownTime * 1000; // convert seconds to milliseconds
         }
 
-        // Function to restore original order of table
-        function restoreOrder() {
-            var table, rows, i;
-            table = document.getElementById("scoreTable");
-            rows = table.rows;
-            for (i = 1; i < rows.length; i++) {
-                table.appendChild(rows[i]);
-            }
-        }
+        isRunning = true;
+        startTime = Date.now();
+        timerInterval = setInterval(() => {
+          const currentTime = Date.now();
+          const timePassed = currentTime - startTime + previousTime;
+          startTime = currentTime;
 
-        // Function to save player and score to localStorage
-        function saveToLocalStorage() {
-            if (isLocalStorageAvailable()) {
-                var players = [];
-                var table = document.getElementById("scoreTable");
-                for (var i = 1; i < table.rows.length; i++) {
-                    var playerName = table.rows[i].cells[0].innerHTML;
-                    var score = table.rows[i].cells[1].innerHTML;
-                    players.push({ name: playerName, score: score });
-                }
-                localStorage.setItem("players", JSON.stringify(players));
-            } else {
-                console.log("localStorage not available!");
+          if (timerMode === "stopwatch") {
+            elapsedTime += timePassed;
+          } else if (timerMode === "countdown") {
+            elapsedTime -= timePassed;
+            if (elapsedTime <= 0) {
+              elapsedTime = 0;
+              clearInterval(timerInterval);
+              alert("倒计时结束！");
             }
-        }
+          }
+          updateTimerDisplay();
+        }, 10); // update every 10 milliseconds
+      }
 
-        // Function to load players and scores from localStorage
-        function loadFromLocalStorage() {
-            if (isLocalStorageAvailable()) {
-                var players = JSON.parse(localStorage.getItem("players"));
-                if (players) {
-                    var table = document.getElementById("scoreTable");
-                    for (var i = 0; i < players.length; i++) {
-                        var row = table.insertRow(-1);
-                        var cell1 = row.insertCell(0);
-                        var cell2 = row.insertCell(1);
-                        var cell3 = row.insertCell(2);
-                        cell1.innerHTML = players[i].name;
-                        cell2.innerHTML = players[i].score;
-                        cell3.innerHTML = `<button onclick="incrementScore(this)">+1分</button> <button onclick="decrementScore(this)">-1分</button> <button onclick="deletePlayer(this)">删除选手</button>`;
-                    }
-                }
-            } else {
-                console.log("localStorage not available!");
-            }
+      function pauseTimer() {
+        if (isRunning) {
+          clearInterval(timerInterval);
+          isRunning = false;
+          previousTime = elapsedTime;
         }
+      }
 
-        // Load players and scores when the page loads
-        window.onload = function () {
-            loadFromLocalStorage();
-        };
+      function resetTimer() {
+        clearInterval(timerInterval);
+        elapsedTime = 0;
+        isRunning = false;
+        previousTime = 0;
+        updateTimerDisplay();
+        lapTimes = [];
+        document.getElementById("lapsContainer").innerHTML = "";
+      }
+
+      function lapTimer() {
+        if (isRunning) {
+          lapTimes.push(elapsedTime);
+          const lapContainer = document.getElementById("lapsContainer");
+          const lapElement = document.createElement("div");
+          lapElement.innerText = `Lap ${lapTimes.length}: ${formatTime(
+            elapsedTime
+          )}`;
+          lapContainer.appendChild(lapElement);
+        }
+      }
+      // Load players and scores when the page loads
+      window.onload = function () {
+        loadFromLocalStorage();
+      };
     </script>
-
-</body>
-
+  </body>
 </html>
