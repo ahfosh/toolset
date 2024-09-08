@@ -1,0 +1,769 @@
+{
+  "weeks": [
+    {
+      "week": 1,
+      "days": [
+        {
+          "date": "8月17日",
+          "day": "周六",
+          "events": {
+            "quiz": "语言知识",
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
+            "creation": null,
+            "gold": 1
+          }
+        },
+        {
+          "date": "8月18日",
+          "day": "周日",
+          "events": {
+            "quiz": "赛前热身&友谊赛",
+            "logic": null,
+            "analysis": "开幕式",
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
+            "creation": null,
+            "gold": null
+          }
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "days": [
+        {
+          "date": "8月24日",
+          "day": "周六",
+          "events": {
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": "常识抢答海选",
+            "creation": null,
+            "gold": null
+          }
+        },
+        {
+          "date": "8月25日",
+          "day": "周日",
+          "events": {
+            "quiz": null,
+            "logic": null,
+            "analysis": "人物辨认",
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
+            "creation": null,
+            "gold": 2
+          }
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "days": [
+        {
+          "date": "8月31日",
+          "day": "周六",
+          "events": {
+            "quiz": "历史知识",
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
+            "creation": null,
+            "gold": 3
+          }
+        },
+        {
+          "date": "9月1日",
+          "day": "周日",
+          "events": {}
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "days": [
+        {
+          "date": "9月7日",
+          "day": "周六",
+          "events": {
+            "quiz": "物理知识",
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
+            "creation": null,
+            "gold": 4
+          }
+        },
+        {
+          "date": "9月8日",
+          "day": "周日",
+          "events": {
+            "quiz": null,
+            "logic": null,
+            "analysis": "艺术辨认",
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
+            "creation": null,
+            "gold": 5
+          }
+        }
+      ]
+    },
+    {
+      "week": 5,
+      "days": [
+        {
+          "date": "9月15日",
+          "day": "周日",
+          "events": {
+            "quiz": "政治知识",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 6
+          }
+        },
+        {
+          "date": "9月16日",
+          "day": "周一",
+          "events": {
+            "quiz": "",
+            "logic": "图形推理",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 7
+          }
+        },
+        {
+          "date": "9月17日",
+          "day": "周二",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "地点辨认",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 8
+          }
+        }
+      ]
+    },
+    {
+      "week": 6,
+      "days": [
+        {
+          "date": "9月21日",
+          "day": "周六",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "",
+            "vision": "听音识曲",
+            "memory": "",
+            "duel": "",
+            "chat": "常识抢答8进4",
+            "creation": "",
+            "gold": 9
+          }
+        },
+        {
+          "date": "9月22日",
+          "day": "周日",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "文字记忆",
+            "duel": "",
+            "chat": "常识抢答半决赛",
+            "creation": "",
+            "gold": 10
+          }
+        }
+      ]
+    },
+    {
+      "week": 7,
+      "days": [
+        {
+          "date": "10月1日",
+          "day": "周二",
+          "events": {
+            "quiz": "地理知识",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "常识抢答季军赛",
+            "creation": "",
+            "gold": 11
+          }
+        },
+        {
+          "date": "10月2日",
+          "day": "周三",
+          "events": {
+            "quiz": "",
+            "logic": "数字推理",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "常识抢答决赛",
+            "creation": "",
+            "gold": 13
+          }
+        },
+        {
+          "date": "10月3日",
+          "day": "周四",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "",
+            "vision": "图寻世界",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 14
+          }
+        },
+        {
+          "date": "10月4日",
+          "day": "周五",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "",
+            "vision": "图寻中国",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 15
+          }
+        },
+        {
+          "date": "10月5日",
+          "day": "周六",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "视频猜影视",
+            "gold": 16
+          }
+        },
+        {
+          "date": "10月6日",
+          "day": "周日",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "音频猜影视",
+            "gold": 17
+          }
+        }
+      ]
+    },
+    {
+      "week": 8,
+      "days": [
+        {
+          "date": "10月12日",
+          "day": "周六",
+          "events": {
+            "quiz": "化学知识",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 18
+          }
+        },
+        {
+          "date": "10月13日",
+          "day": "周日",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "",
+            "vision": "行政区划",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 19
+          }
+        }
+      ]
+    },
+    {
+      "week": 9,
+      "days": [
+        {
+          "date": "10月19日",
+          "day": "周六",
+          "events": {
+            "quiz": "科技知识",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 20
+          }
+        },
+        {
+          "date": "10月20日",
+          "day": "周日",
+          "events": {
+            "quiz": "",
+            "logic": "归纳推理",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 21
+          }
+        }
+      ]
+    },
+    {
+      "week": 10,
+      "days": [
+        {
+          "date": "10月26日",
+          "day": "周六",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "图片找茬",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 22
+          }
+        },
+        {
+          "date": "10月27日",
+          "day": "周日",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "视频记忆",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 23
+          }
+        }
+      ]
+    },
+    {
+      "week": 11,
+      "days": [
+        {
+          "date": "11月2日",
+          "day": "周六",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "短时记忆海选",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 23
+          }
+        },
+        {
+          "date": "11月3日",
+          "day": "周日",
+          "events": {
+            "quiz": "艺术知识",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 24
+          }
+        }
+      ]
+    },
+    {
+      "week": 12,
+      "days": [
+        {
+          "date": "11月9日",
+          "day": "周六",
+          "events": {
+            "quiz": "",
+            "logic": "类比推理",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 25
+          }
+        },
+        {
+          "date": "11月10日",
+          "day": "周日",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "视频迷踪",
+            "gold": 26
+          }
+        }
+      ]
+    },
+    {
+      "week": 13,
+      "days": [
+        {
+          "date": "11月16日",
+          "day": "周六",
+          "events": {
+            "quiz": "娱乐知识",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 27
+          }
+        },
+        {
+          "date": "11月17日",
+          "day": "周日",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "生物辨认",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 28
+          }
+        }
+      ]
+    },
+    {
+      "week": 14,
+      "days": [
+        {
+          "date": "11月23日",
+          "day": "周六",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "短时记忆决赛",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 29
+          }
+        },
+        {
+          "date": "11月24日",
+          "day": "周日",
+          "events": {
+            "quiz": "体育知识",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "小测验竞速",
+            "creation": "创意创造大项评委评选",
+            "gold": 31
+          }
+        }
+      ]
+    },
+    {
+      "week": 15,
+      "days": [
+        {
+          "date": "11月30日",
+          "day": "周六",
+          "events": {
+            "quiz": "",
+            "logic": "情境推理",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 32
+          }
+        },
+        {
+          "date": "12月1日",
+          "day": "周日",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "音频记忆",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 33
+          }
+        }
+      ]
+    },
+    {
+      "week": 16,
+      "days": [
+        {
+          "date": "12月7日",
+          "day": "周六",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "三关键词猜海选",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 33
+          }
+        },
+        {
+          "date": "12月8日",
+          "day": "周日",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "三关键词猜决赛",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 34
+          }
+        }
+      ]
+    },
+    {
+      "week": 17,
+      "days": [
+        {
+          "date": "12月14日",
+          "day": "周六",
+          "events": {
+            "quiz": "生物知识",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 35
+          }
+        },
+        {
+          "date": "12月15日",
+          "day": "周日",
+          "events": {
+            "quiz": "",
+            "logic": "是非推理",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 36
+          }
+        }
+      ]
+    },
+    {
+      "week": 18,
+      "days": [
+        {
+          "date": "12月21日",
+          "day": "周六",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "万物辨认",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 37
+          }
+        },
+        {
+          "date": "12月22日",
+          "day": "周日",
+          "events": {
+            "quiz": "生活知识",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "",
+            "gold": 38
+          }
+        }
+      ]
+    },
+    {
+      "week": 19,
+      "days": [
+        {
+          "date": "12月28日",
+          "day": "周六",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "",
+            "vision": "网络迷踪",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "高深地理",
+            "gold": 39
+          }
+        },
+        {
+          "date": "12月29日",
+          "day": "周日",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "",
+            "vision": "视频问答",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "创意创造大项公布结果",
+            "gold": 41
+          }
+        }
+      ]
+    },
+    {
+      "week": 20,
+      "days": [
+        {
+          "date": "1月1日",
+          "day": "周三",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "群员知识",
+            "creation": "",
+            "gold": 47
+          }
+        },
+        {
+          "date": "",
+          "day": "",
+          "events": {
+            "quiz": "",
+            "logic": "",
+            "analysis": "",
+            "vision": "",
+            "memory": "",
+            "duel": "",
+            "chat": "",
+            "creation": "闭幕式&颁奖典礼",
+            "gold": ""
+          }
+        }
+      ]
+    }
+  ]
+}
