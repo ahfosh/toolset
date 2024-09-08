@@ -14,23 +14,7 @@
             "memory": null,
             "duel": null,
             "chat": null,
-            "creation": null,
             "gold": 1
-          }
-        },
-        {
-          "date": "8月18日",
-          "day": "周日",
-          "events": {
-            "quiz": "赛前热身&友谊赛",
-            "logic": null,
-            "analysis": "开幕式",
-            "vision": null,
-            "memory": null,
-            "duel": null,
-            "chat": null,
-            "creation": null,
-            "gold": null
           }
         }
       ]
@@ -47,10 +31,9 @@
             "analysis": null,
             "vision": null,
             "memory": null,
-            "duel": null,
-            "chat": "常识抢答海选",
-            "creation": null,
-            "gold": null
+            "duel": "常识抢答海选",
+            "chat": null,
+            "gold": 1
           }
         },
         {
@@ -64,7 +47,6 @@
             "memory": null,
             "duel": null,
             "chat": null,
-            "creation": null,
             "gold": 2
           }
         }
@@ -84,14 +66,8 @@
             "memory": null,
             "duel": null,
             "chat": null,
-            "creation": null,
             "gold": 3
           }
-        },
-        {
-          "date": "9月1日",
-          "day": "周日",
-          "events": {}
         }
       ]
     },
@@ -109,7 +85,6 @@
             "memory": null,
             "duel": null,
             "chat": null,
-            "creation": null,
             "gold": 4
           }
         },
@@ -124,7 +99,6 @@
             "memory": null,
             "duel": null,
             "chat": null,
-            "creation": null,
             "gold": 5
           }
         }
@@ -138,13 +112,12 @@
           "day": "周日",
           "events": {
             "quiz": "政治知识",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 6
           }
         },
@@ -152,14 +125,13 @@
           "date": "9月16日",
           "day": "周一",
           "events": {
-            "quiz": "",
+            "quiz": null,
             "logic": "图形推理",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 7
           }
         },
@@ -167,14 +139,13 @@
           "date": "9月17日",
           "day": "周二",
           "events": {
-            "quiz": "",
-            "logic": "",
+            "quiz": null,
+            "logic": null,
             "analysis": "地点辨认",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 8
           }
         }
@@ -187,14 +158,13 @@
           "date": "9月21日",
           "day": "周六",
           "events": {
-            "quiz": "",
-            "logic": "",
-            "analysis": "",
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
             "vision": "听音识曲",
-            "memory": "",
-            "duel": "",
-            "chat": "常识抢答8进4",
-            "creation": "",
+            "memory": null,
+            "duel": "常识抢答8进4",
+            "chat": null,
             "gold": 9
           }
         },
@@ -202,14 +172,13 @@
           "date": "9月22日",
           "day": "周日",
           "events": {
-            "quiz": "",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
+            "vision": null,
             "memory": "文字记忆",
-            "duel": "",
-            "chat": "常识抢答半决赛",
-            "creation": "",
+            "duel": "常识抢答半决赛",
+            "chat": null,
             "gold": 10
           }
         }
@@ -223,13 +192,12 @@
           "day": "周二",
           "events": {
             "quiz": "地理知识",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "常识抢答季军赛",
-            "creation": "",
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": "常识抢答季军赛",
+            "chat": null,
             "gold": 11
           }
         },
@@ -237,14 +205,13 @@
           "date": "10月2日",
           "day": "周三",
           "events": {
-            "quiz": "",
+            "quiz": null,
             "logic": "数字推理",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "常识抢答决赛",
-            "creation": "",
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": "常识抢答决赛",
+            "chat": null,
             "gold": 13
           }
         },
@@ -252,14 +219,13 @@
           "date": "10月3日",
           "day": "周四",
           "events": {
-            "quiz": "",
-            "logic": "",
-            "analysis": "",
-            "vision": "图寻世界",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": "图寻世界",
+            "chat": null,
             "gold": 14
           }
         },
@@ -267,14 +233,13 @@
           "date": "10月4日",
           "day": "周五",
           "events": {
-            "quiz": "",
-            "logic": "",
-            "analysis": "",
-            "vision": "图寻中国",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": "图寻中国",
+            "chat": null,
             "gold": 15
           }
         },
@@ -282,14 +247,13 @@
           "date": "10月5日",
           "day": "周六",
           "events": {
-            "quiz": "",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "视频猜影视",
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
+            "vision": "视频猜影视",
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 16
           }
         },
@@ -297,14 +261,13 @@
           "date": "10月6日",
           "day": "周日",
           "events": {
-            "quiz": "",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "音频猜影视",
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
+            "vision": "音频猜影视",
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 17
           }
         }
@@ -318,13 +281,12 @@
           "day": "周六",
           "events": {
             "quiz": "化学知识",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 18
           }
         },
@@ -332,14 +294,13 @@
           "date": "10月13日",
           "day": "周日",
           "events": {
-            "quiz": "",
-            "logic": "",
-            "analysis": "",
-            "vision": "行政区划",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": "行政区划",
             "gold": 19
           }
         }
@@ -353,13 +314,12 @@
           "day": "周六",
           "events": {
             "quiz": "科技知识",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 20
           }
         },
@@ -367,14 +327,13 @@
           "date": "10月20日",
           "day": "周日",
           "events": {
-            "quiz": "",
+            "quiz": null,
             "logic": "归纳推理",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 21
           }
         }
@@ -387,14 +346,13 @@
           "date": "10月26日",
           "day": "周六",
           "events": {
-            "quiz": "",
-            "logic": "",
+            "quiz": null,
+            "logic": null,
             "analysis": "图片找茬",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 22
           }
         },
@@ -402,14 +360,13 @@
           "date": "10月27日",
           "day": "周日",
           "events": {
-            "quiz": "",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
+            "vision": null,
             "memory": "视频记忆",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "duel": null,
+            "chat": null,
             "gold": 23
           }
         }
@@ -422,14 +379,13 @@
           "date": "11月2日",
           "day": "周六",
           "events": {
-            "quiz": "",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
-            "memory": "短时记忆海选",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": "短时记忆海选",
+            "chat": null,
             "gold": 23
           }
         },
@@ -438,13 +394,12 @@
           "day": "周日",
           "events": {
             "quiz": "艺术知识",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 24
           }
         }
@@ -457,14 +412,13 @@
           "date": "11月9日",
           "day": "周六",
           "events": {
-            "quiz": "",
+            "quiz": null,
             "logic": "类比推理",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 25
           }
         },
@@ -472,14 +426,13 @@
           "date": "11月10日",
           "day": "周日",
           "events": {
-            "quiz": "",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "视频迷踪",
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
+            "vision": "视频迷踪",
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 26
           }
         }
@@ -493,13 +446,12 @@
           "day": "周六",
           "events": {
             "quiz": "娱乐知识",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 27
           }
         },
@@ -507,14 +459,13 @@
           "date": "11月17日",
           "day": "周日",
           "events": {
-            "quiz": "",
-            "logic": "",
+            "quiz": null,
+            "logic": null,
             "analysis": "生物辨认",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 28
           }
         }
@@ -527,14 +478,13 @@
           "date": "11月23日",
           "day": "周六",
           "events": {
-            "quiz": "",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
-            "memory": "短时记忆决赛",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": "短时记忆决赛",
+            "chat": null,
             "gold": 29
           }
         },
@@ -543,13 +493,12 @@
           "day": "周日",
           "events": {
             "quiz": "体育知识",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
             "chat": "小测验竞速",
-            "creation": "创意创造大项评委评选",
             "gold": 31
           }
         }
@@ -562,14 +511,13 @@
           "date": "11月30日",
           "day": "周六",
           "events": {
-            "quiz": "",
+            "quiz": null,
             "logic": "情境推理",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 32
           }
         },
@@ -577,14 +525,13 @@
           "date": "12月1日",
           "day": "周日",
           "events": {
-            "quiz": "",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
+            "vision": null,
             "memory": "音频记忆",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "duel": null,
+            "chat": null,
             "gold": 33
           }
         }
@@ -597,14 +544,13 @@
           "date": "12月7日",
           "day": "周六",
           "events": {
-            "quiz": "",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
-            "memory": "三关键词猜海选",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": "三关键词猜海选",
+            "chat": null,
             "gold": 33
           }
         },
@@ -612,14 +558,13 @@
           "date": "12月8日",
           "day": "周日",
           "events": {
-            "quiz": "",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
-            "memory": "三关键词猜决赛",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": "三关键词猜决赛",
+            "chat": null,
             "gold": 34
           }
         }
@@ -633,13 +578,12 @@
           "day": "周六",
           "events": {
             "quiz": "生物知识",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 35
           }
         },
@@ -647,14 +591,13 @@
           "date": "12月15日",
           "day": "周日",
           "events": {
-            "quiz": "",
+            "quiz": null,
             "logic": "是非推理",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 36
           }
         }
@@ -667,14 +610,13 @@
           "date": "12月21日",
           "day": "周六",
           "events": {
-            "quiz": "",
-            "logic": "",
+            "quiz": null,
+            "logic": null,
             "analysis": "万物辨认",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 37
           }
         },
@@ -683,13 +625,12 @@
           "day": "周日",
           "events": {
             "quiz": "生活知识",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "",
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
+            "chat": null,
             "gold": 38
           }
         }
@@ -702,14 +643,13 @@
           "date": "12月28日",
           "day": "周六",
           "events": {
-            "quiz": "",
-            "logic": "",
-            "analysis": "",
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
             "vision": "网络迷踪",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "高深地理",
+            "memory": null,
+            "duel": null,
+            "chat": "高深地理",
             "gold": 39
           }
         },
@@ -717,14 +657,13 @@
           "date": "12月29日",
           "day": "周日",
           "events": {
-            "quiz": "",
-            "logic": "",
-            "analysis": "",
-            "vision": "视频问答",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "创意创造大项公布结果",
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
+            "vision": "网络迷踪",
+            "memory": "视频问答",
+            "duel": null,
+            "chat": null,
             "gold": 41
           }
         }
@@ -737,30 +676,14 @@
           "date": "1月1日",
           "day": "周三",
           "events": {
-            "quiz": "",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": null,
             "chat": "群员知识",
-            "creation": "",
             "gold": 47
-          }
-        },
-        {
-          "date": "",
-          "day": "",
-          "events": {
-            "quiz": "",
-            "logic": "",
-            "analysis": "",
-            "vision": "",
-            "memory": "",
-            "duel": "",
-            "chat": "",
-            "creation": "闭幕式&颁奖典礼",
-            "gold": ""
           }
         }
       ]
