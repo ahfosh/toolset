@@ -31,7 +31,7 @@ function renderTable(data) {
     row.innerHTML = `
             <td>${index + 1}</td>
             <td>${entry.nickname}</td>
-            <td>${entry.real_name || "-"}</td>
+            <td>${entry.name}</td>
             <td>${entry.gold}</td>
             <td>${entry.silver}</td>
             <td>${entry.bronze}</td>
