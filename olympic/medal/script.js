@@ -40,23 +40,3 @@ function renderTable(data) {
     tbody.appendChild(row);
   });
 }
-
-// 排序表格数据
-function sortTable(sortKey) {
-  if (currentSortColumn === sortKey) {
-    ascendingOrder = !ascendingOrder; // 切换升序/降序
-  } else {
-    currentSortColumn = sortKey;
-    ascendingOrder = true; // 默认升序
-  }
-
-  const sortedData = [...medalData].sort((a, b) => {
-    if (ascendingOrder) {
-      return a[sortKey] - b[sortKey];
-    } else {
-      return b[sortKey] - a[sortKey];
-    }
-  });
-
-  renderTable(sortedData);
-}
