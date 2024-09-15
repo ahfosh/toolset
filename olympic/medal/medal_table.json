@@ -1,5 +1,13 @@
 [
   {
+    "nickname": "历史王",
+    "real_name": "SilvesterW",
+    "gold": 2,
+    "silver": 0,
+    "bronze": 1,
+    "total": 3
+  },
+  {
     "nickname": "白熊哥",
     "real_name": "Eta Carinae",
     "gold": 1,
@@ -13,14 +21,6 @@
     "gold": 1,
     "silver": 1,
     "bronze": 0,
-    "total": 2
-  },
-  {
-    "nickname": "历史王",
-    "real_name": "SilvesterW",
-    "gold": 1,
-    "silver": 0,
-    "bronze": 1,
     "total": 2
   },
   {
@@ -38,6 +38,14 @@
     "silver": 0,
     "bronze": 0,
     "total": 1
+  },
+  {
+    "nickname": "",
+    "real_name": "柠檬",
+    "gold": 0,
+    "silver": 1,
+    "bronze": 1,
+    "total": 2
   },
   {
     "nickname": "",
@@ -76,16 +84,8 @@
     "real_name": "因变量Iluly",
     "gold": 0,
     "silver": 0,
-    "bronze": 1,
-    "total": 1
-  },
-  {
-    "nickname": "",
-    "real_name": "柠檬",
-    "gold": 0,
-    "silver": 0,
-    "bronze": 1,
-    "total": 1
+    "bronze": 2,
+    "total": 2
   },
   {
     "nickname": "",
