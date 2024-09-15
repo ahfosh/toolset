@@ -35,7 +35,7 @@ function renderTable(data) {
             <td>${entry.gold}</td>
             <td>${entry.silver}</td>
             <td>${entry.bronze}</td>
-            <td>${entry.total}</td>
+            <td>${entry.gold + entry.silver + entry.bronze}</td>
         `;
     tbody.appendChild(row);
   });
