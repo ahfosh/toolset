@@ -21,15 +21,22 @@
     "bronze": 0
   },
   {
-    "nickname": "杰瑞弟",
-    "name": "陈Jerry",
+    "nickname": "",
+    "name": "联邦德国海军Z4",
     "gold": 1,
-    "silver": 0,
+    "silver": 1,
     "bronze": 0
   },
   {
     "nickname": "物理王",
     "name": "jasy",
+    "gold": 1,
+    "silver": 1,
+    "bronze": 0
+  },
+  {
+    "nickname": "杰瑞弟",
+    "name": "陈Jerry",
     "gold": 1,
     "silver": 0,
     "bronze": 0
@@ -44,13 +51,6 @@
   {
     "nickname": "",
     "name": "地理博物萌新",
-    "gold": 0,
-    "silver": 1,
-    "bronze": 0
-  },
-  {
-    "nickname": "",
-    "name": "联邦德国海军Z4",
     "gold": 0,
     "silver": 1,
     "bronze": 0
@@ -86,6 +86,13 @@
   {
     "nickname": "",
     "name": "akakayhea",
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+  },
+  {
+    "nickname": "",
+    "name": "ztary",
     "gold": 0,
     "silver": 0,
     "bronze": 1
