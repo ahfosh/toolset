@@ -11,15 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
       renderTable(medalData);
     })
     .catch((error) => console.error("Error fetching data:", error));
-
-  // 为每一个可排序的列添加点击事件
-  const headers = document.querySelectorAll("th[data-sort]");
-  headers.forEach((header) => {
-    header.addEventListener("click", function () {
-      const sortKey = this.getAttribute("data-sort");
-      sortTable(sortKey);
-    });
-  });
 });
 
 // 渲染表格
