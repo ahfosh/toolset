@@ -22,7 +22,7 @@ function renderTable(data) {
     row.innerHTML = `
             <td>${index + 1}</td>
             <td>${entry.nickname}</td>
-            <td>${entry.name}</td>
+            <td><a href="${entry.link}" target="_blank">${entry.name}</a></td>
             <td>${entry.gold}</td>
             <td>${entry.silver}</td>
             <td>${entry.bronze}</td>
