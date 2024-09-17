@@ -1,17 +1,17 @@
 [
   {
+    "nickname": "白熊哥",
+    "name": "Eta Carinae",
+    "gold": 2,
+    "silver": 1,
+    "bronze": 0
+  },
+  {
     "nickname": "历史王",
     "name": "SilvesterW",
     "gold": 2,
     "silver": 0,
     "bronze": 1
-  },
-  {
-    "nickname": "白熊哥",
-    "name": "Eta Carinae",
-    "gold": 1,
-    "silver": 1,
-    "bronze": 0
   },
   {
     "nickname": "病加索",
@@ -53,11 +53,18 @@
     "name": "地理博物萌新",
     "gold": 0,
     "silver": 1,
-    "bronze": 0
+    "bronze": 1
   },
   {
     "nickname": "",
     "name": "Gerrard4",
+    "gold": 0,
+    "silver": 1,
+    "bronze": 0
+  },
+  {
+    "nickname": "",
+    "name": "Jack-Z",
     "gold": 0,
     "silver": 1,
     "bronze": 0
@@ -93,6 +100,13 @@
   {
     "nickname": "",
     "name": "ztary",
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+  },
+  {
+    "nickname": "",
+    "name": "Potters",
     "gold": 0,
     "silver": 0,
     "bronze": 1
