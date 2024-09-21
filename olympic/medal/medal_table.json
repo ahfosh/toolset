@@ -5,14 +5,14 @@
     "link": "",
     "gold": 2,
     "silver": 1,
-    "bronze": 0
+    "bronze": 1
   },
   {
     "nickname": "历史王",
     "name": "SilvesterW",
     "link": "https://xiaoce.fun/u/593757",
     "gold": 2,
-    "silver": 0,
+    "silver": 1,
     "bronze": 1
   },
   {
@@ -40,8 +40,16 @@
     "bronze": 0
   },
   {
+    "nickname": "耐铜王",
+    "name": "绿柱石吧的海角",
+    "link": "https://xiaoce.fun/u/90426",
+    "gold": 1,
+    "silver": 0,
+    "bronze": 3
+  },
+  {
     "nickname": "杰瑞弟",
-    "name": "陈Jerry",
+    "name": "陈Jerry呀~",
     "link": "https://xiaoce.fun/u/272119",
     "gold": 1,
     "silver": 0,
@@ -49,7 +57,7 @@
   },
   {
     "nickname": "",
-    "name": "柠檬",
+    "name": "悸",
     "link": "https://xiaoce.fun/u/116361",
     "gold": 0,
     "silver": 1,
@@ -78,14 +86,6 @@
     "gold": 0,
     "silver": 1,
     "bronze": 0
-  },
-  {
-    "nickname": "耐铜王",
-    "name": "绿柱石吧的海角",
-    "link": "https://xiaoce.fun/u/90426",
-    "gold": 0,
-    "silver": 0,
-    "bronze": 3
   },
   {
     "nickname": "",
