@@ -47,19 +47,20 @@ tbody tr:hover {
   background-color: #f1f1f1;
 }
 
-tbody tr:nth-child(1) {
-  background-color: gold;
-  color: black;
-}
-
+tbody tr:nth-child(1),
 tbody tr:nth-child(2) {
-  background-color: gainsboro;
+  background-color: gold;
   color: black;
 }
 
 tbody tr:nth-child(3),
 tbody tr:nth-child(4),
 tbody tr:nth-child(5) {
+  background-color: gainsboro;
+  color: black;
+}
+
+tbody tr:nth-child(6) {
   background-color: peru;
   color: black;
 }
