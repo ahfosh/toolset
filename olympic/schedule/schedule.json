@@ -163,7 +163,7 @@
             "analysis": null,
             "vision": "听音识曲",
             "memory": null,
-            "duel": "常识抢答8进4",
+            "duel": "常识抢答八强赛",
             "chat": null,
             "gold": 9
           }
@@ -177,7 +177,7 @@
             "analysis": null,
             "vision": null,
             "memory": "文字记忆",
-            "duel": "常识抢答半决赛",
+            "duel": null,
             "chat": null,
             "gold": 10
           }
@@ -188,6 +188,20 @@
       "week": 7,
       "days": [
         {
+          "date": "9月30日",
+          "day": "周一",
+          "events": {
+            "quiz": null,
+            "logic": null,
+            "analysis": null,
+            "vision": null,
+            "memory": null,
+            "duel": "常识抢答决赛",
+            "chat": null,
+            "gold": 11
+          }
+        },
+        {
           "date": "10月1日",
           "day": "周二",
           "events": {
@@ -196,9 +210,9 @@
             "analysis": null,
             "vision": null,
             "memory": null,
-            "duel": "常识抢答季军赛",
+            "duel": null,
             "chat": null,
-            "gold": 11
+            "gold": 12
           }
         },
         {
@@ -210,7 +224,7 @@
             "analysis": null,
             "vision": null,
             "memory": null,
-            "duel": "常识抢答决赛",
+            "duel": null,
             "chat": null,
             "gold": 13
           }
