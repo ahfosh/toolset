@@ -1,5 +1,13 @@
 [
   {
+    "nickname": "政史皇",
+    "name": "SilvesterW",
+    "link": "https://xiaoce.fun/u/593757",
+    "gold": 2,
+    "silver": 1,
+    "bronze": 2
+  },
+  {
     "nickname": "白熊哥",
     "name": "Eta Carinae",
     "link": "",
@@ -8,25 +16,17 @@
     "bronze": 1
   },
   {
-    "nickname": "政史皇",
-    "name": "SilvesterW",
-    "link": "https://xiaoce.fun/u/593757",
+    "nickname": "物理王",
+    "name": "jasy",
+    "link": "https://xiaoce.fun/u/259117",
     "gold": 2,
     "silver": 1,
-    "bronze": 1
+    "bronze": 0
   },
   {
     "nickname": "病加索",
     "name": "樱桃味弹珠",
     "link": "",
-    "gold": 1,
-    "silver": 1,
-    "bronze": 0
-  },
-  {
-    "nickname": "物理王",
-    "name": "jasy",
-    "link": "https://xiaoce.fun/u/259117",
     "gold": 1,
     "silver": 1,
     "bronze": 0
@@ -123,6 +123,14 @@
     "nickname": "",
     "name": "Potters",
     "link": "https://xiaoce.fun/u/135515",
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+  },
+  {
+    "nickname": "",
+    "name": "🇻🇳电车过海",
+    "link": "",
     "gold": 0,
     "silver": 0,
     "bronze": 1
