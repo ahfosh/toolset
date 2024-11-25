@@ -29,7 +29,7 @@ $(document).ready(function () {
         e.each(function () {
             var answerParam = $("#answerParam").val()
             var id = $(this).attr('id');
-            var title = $(this).attr('title') || $(this).attr('name')
+            var title = $(this).attr('title') || $(this).attr('name') || $(this).attr('data-name');
             if (!title && /[\u4e00-\u9fa5]/.test(id)) {
                 title = id; // 如果没有标题且包含中文，则使用ID代替
             }

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>拼音与IPA转换</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        color: #333;
+        line-height: 1.6;
+      }
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        text-align: center;
+        color: #007bff;
+      }
+      .input-group {
+        margin-bottom: 20px;
+      }
+      .input-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+      }
+      .input-group input {
+        width: calc(100% - 22px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      .input-group button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .input-group button:hover {
+        background-color: #0056b3;
+      }
+      .output {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .output span {
+        flex-grow: 1;
+        word-break: break-all;
+      }
+      .output button {
+        margin-left: 10px;
+        padding: 5px 10px;
+        border: none;
+        background-color: #28a745;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .output button:hover {
+        background-color: #218838;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>拼音与IPA转换</h2>
+      <div class="input-group">
+        <label for="pinyin-input">请输入拼音（用空格分割）：</label>
+        <input type="text" id="pinyin-input" />
+        <button onclick="convertToIPA()">转换为IPA</button>
+      </div>
+      <div class="output" id="ipa-output">
+        <span></span>
+        <button onclick="copyToClipboard('ipa-output')">复制</button>
+      </div>
+      <div class="input-group">
+        <label for="ipa-input">请输入IPA（用空格分割）：</label>
+        <input type="text" id="ipa-input" />
+        <button onclick="convertToPinyin()">转换为拼音</button>
+      </div>
+      <div class="output" id="pinyin-output">
+        <span></span>
+        <button onclick="copyToClipboard('pinyin-output')">复制</button>
+      </div>
+    </div>
+
+    <script>
+      let pinyinToIpaMapping = {};
+      let ipaToPinyinMapping = {};
+
+      async function loadMappings() {
+        const response = await fetch("PY2IPA.csv");
+        const csvText = await response.text();
+        const lines = csvText.split("\n");
+        lines.shift(); // Remove header line
+
+        lines.forEach((line) => {
+          const [pinyin, ipa] = line.split(",").map((item) => item.trim());
+          if (pinyin && ipa) {
+            pinyinToIpaMapping[pinyin] = ipa;
+            ipaToPinyinMapping[ipa] = pinyin;
+          }
+        });
+      }
+
+      function convertToIPA() {
+        const input = document.getElementById("pinyin-input").value.trim();
+        const pinyinArray = input.split(/\s+/);
+        const ipaArray = pinyinArray.map(
+          (pinyin) => pinyinToIpaMapping[pinyin] || pinyin
+        );
+        document.querySelector("#ipa-output span").textContent =
+          ipaArray.join(" ");
+      }
+
+      function convertToPinyin() {
+        const input = document.getElementById("ipa-input").value.trim();
+        const ipaArray = input.split(/\s+/);
+        const pinyinArray = ipaArray.map(
+          (ipa) => ipaToPinyinMapping[ipa] || ipa
+        );
+        document.querySelector("#pinyin-output span").textContent =
+          pinyinArray.join(" ");
+      }
+
+      function copyToClipboard(elementId) {
+        const text = document.querySelector(`#${elementId} span`).textContent;
+        navigator.clipboard
+          .writeText(text)
+          .then(() => alert("复制成功！"))
+          .catch((err) => alert("复制失败：" + err));
+      }
+
+      // Load mappings on page load
+      window.onload = loadMappings;
+    </script>
+  </body>
+</html>
