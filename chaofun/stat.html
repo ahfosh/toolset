@@ -229,9 +229,7 @@
             players.push({ name: playerName, score: score });
           }
           localStorage.setItem("players", JSON.stringify(players));
-        } else {
-          console.log("localStorage not available!");
-        }
+        } else console.log("localStorage not available!");
       }
 
       // Function to load players and scores from localStorage
@@ -250,9 +248,7 @@
               cell3.innerHTML = `<button onclick="incrementScore(this)">+1分</button> <button onclick="decrementScore(this)">-1分</button> <button onclick="deletePlayer(this)">删除选手</button>`;
             }
           }
-        } else {
-          console.log("localStorage not available!");
-        }
+        } else console.log("localStorage not available!");
       }
 
       let timerInterval;

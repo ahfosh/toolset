@@ -1,101 +1,101 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Backslash After Each Character</title>
     <style>
-        textarea {
-            width: 100%;
-            height: 200px;
-            margin-bottom: 10px;
-        }
+      textarea {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 10px;
+      }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
 
-        th,
-        td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+      }
 
-        button {
-            margin-right: 10px;
-        }
+      button {
+        margin-right: 10px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <textarea id="inputText" placeholder="Enter text"></textarea>
     <button onclick="addBackslash()">Add Backslash</button>
     <button onclick="copyTableToClipboard()">Copy Table to Clipboard</button>
     <button onclick="exportTableToCSV()">Export Table to CSV</button>
     <table>
-        <thead>
-            <tr>
-                <th>Original Data</th>
-                <th>Processed Data</th>
-            </tr>
-        </thead>
-        <tbody id="outputTableBody">
-
-        </tbody>
+      <thead>
+        <tr>
+          <th>Original Data</th>
+          <th>Processed Data</th>
+        </tr>
+      </thead>
+      <tbody id="outputTableBody"></tbody>
     </table>
 
     <script>
-        function addBackslash() {
-            var input = document.getElementById('inputText').value;
-            var output = input.replace(/([^\\\n])(?!\n|$)/g, "$1\\");
-            var lines = input.split('\n');
-            var outputLines = output.split('\n');
-            var tableBody = document.getElementById('outputTableBody');
-            tableBody.innerHTML = '';
+      function addBackslash() {
+        var input = document.getElementById("inputText").value;
+        var output = input.replace(/([^\\\n])(?!\n|$)/g, "$1\\");
+        var lines = input.split("\n");
+        var outputLines = output.split("\n");
+        var tableBody = document.getElementById("outputTableBody");
+        tableBody.innerHTML = "";
 
-            for (var i = 0; i < lines.length; i++) {
-                var tr = document.createElement('tr');
-                var td1 = document.createElement('td');
-                var td2 = document.createElement('td');
-                td1.textContent = lines[i];
-                td2.textContent = outputLines[i];
-                tr.appendChild(td1);
-                tr.appendChild(td2);
-                tableBody.appendChild(tr);
-            }
+        for (var i = 0; i < lines.length; i++) {
+          var tr = document.createElement("tr");
+          var td1 = document.createElement("td");
+          var td2 = document.createElement("td");
+          td1.textContent = lines[i];
+          td2.textContent = outputLines[i];
+          tr.appendChild(td1);
+          tr.appendChild(td2);
+          tableBody.appendChild(tr);
         }
+      }
 
-        function copyTableToClipboard() {
-            var table = document.querySelector('table');
-            var range = document.createRange();
-            range.selectNode(table);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
-            document.execCommand('copy');
-            window.getSelection().removeAllRanges();
-            alert('Table copied to clipboard!');
-        }
+      function copyTableToClipboard() {
+        var table = document.querySelector("table");
+        var range = document.createRange();
+        range.selectNode(table);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();
+        alert("Table copied to clipboard!");
+      }
 
-        function exportTableToCSV() {
-            var table = document.querySelector('table');
-            var rows = Array.from(table.querySelectorAll('tr'));
-            var csvContent = rows.map(function (row) {
-                var columns = Array.from(row.querySelectorAll('th, td'));
-                return columns.map(function (column) {
-                    return column.textContent;
-                }).join(',');
-            }).join('\n');
-            var encodedUri = encodeURI('data:text/csv;charset=utf-8,' + csvContent);
-            var link = document.createElement('a');
-            link.setAttribute('href', encodedUri);
-            link.setAttribute('download', 'table.csv');
-            document.body.appendChild(link);
-            link.click();
-        }
+      function exportTableToCSV() {
+        var table = document.querySelector("table");
+        var rows = Array.from(table.querySelectorAll("tr"));
+        var csvContent = rows
+          .map(function (row) {
+            var columns = Array.from(row.querySelectorAll("th, td"));
+            return columns
+              .map(function (column) {
+                return column.textContent;
+              })
+              .join(",");
+          })
+          .join("\n");
+        var encodedUri = encodeURI("data:text/csv;charset=utf-8," + csvContent);
+        var link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "table.csv");
+        document.body.appendChild(link);
+        link.click();
+      }
     </script>
-</body>
-
+  </body>
 </html>

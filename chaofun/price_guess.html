@@ -1,234 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>物价竞猜统计工具</title>
     <style>
-        html,
-        body {
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-        }
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
 
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f2f2f2;
-            color: #333;
-            border: 0;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f2f2f2;
+        color: #333;
+        border: 0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+      }
 
-        header,
-        footer {
-            background-color: #222;
-            color: #fff;
-            padding: 2.5vh;
-        }
+      header,
+      footer {
+        background-color: #222;
+        color: #fff;
+        padding: 2.5vh;
+      }
 
-        header {
-            margin-bottom: auto;
-        }
+      header {
+        margin-bottom: auto;
+      }
 
-        footer {
-            margin-top: auto;
-        }
+      footer {
+        margin-top: auto;
+      }
 
-        h1,
-        h2,
-        p {
-            margin: 0;
-        }
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
-        .container {
-            margin: 2vh;
-            padding: 2vh;
-            background-color: #fff;
-            border-radius: 1vw;
-            box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
+      .container {
+        margin: 2vh;
+        padding: 2vh;
+        background-color: #fff;
+        border-radius: 1vw;
+        box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
 
-        textarea {
-            width: 30vw;
-            padding: 10px;
-            border: none;
-            outline: none;
-            background-color: #f9f9f9;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease-in-out;
-        }
+      textarea {
+        width: 30vw;
+        padding: 10px;
+        border: none;
+        outline: none;
+        background-color: #f9f9f9;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease-in-out;
+      }
 
-        input[type="number"] {
-            padding: 10px;
-            border-radius: 2.5vw;
-            border: none;
-            outline: none;
-            background-color: #f9f9f9;
-            width: 5vw;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease-in-out;
-        }
+      input[type="number"] {
+        padding: 10px;
+        border-radius: 2.5vw;
+        border: none;
+        outline: none;
+        background-color: #f9f9f9;
+        width: 5vw;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease-in-out;
+      }
 
-        button {
-            vertical-align: baseline;
-            display: inline-block;
-            padding: 10px 15px;
-            margin: 5px;
-            background-color: black;
-            color: #fff;
-            max-width: max-content;
-            border-radius: 25px;
-            text-decoration: none;
-            border: none;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease-in-out;
-        }
+      button {
+        vertical-align: baseline;
+        display: inline-block;
+        padding: 10px 15px;
+        margin: 5px;
+        background-color: black;
+        color: #fff;
+        max-width: max-content;
+        border-radius: 25px;
+        text-decoration: none;
+        border: none;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease-in-out;
+      }
 
-        button:hover {
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
-            transition: box-shadow 0.3s ease-in-out;
-        }
+      button:hover {
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+        transition: box-shadow 0.3s ease-in-out;
+      }
 
-        table {
-            margin: 0 auto;
-            width: 30vw;
-            border: none;
-            outline: none;
-            background-color: #f9f9f9;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease-in-out;
-        }
+      table {
+        margin: 0 auto;
+        width: 30vw;
+        border: none;
+        outline: none;
+        background-color: #f9f9f9;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease-in-out;
+      }
 
-        th,
-        td {
-            min-width: max-content;
-            border: 1px solid #dddddd;
-            padding: auto;
-        }
+      th,
+      td {
+        min-width: max-content;
+        border: 1px solid #dddddd;
+        padding: auto;
+      }
 
-        th {
-            background-color: #f2f2f2;
-        }
+      th {
+        background-color: #f2f2f2;
+      }
 
-        #output p {
-            font-weight: bold;
-        }
+      #output p {
+        font-weight: bold;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1>物价竞猜统计工具</h1>
+      <h1>物价竞猜统计工具</h1>
     </header>
 
     <div class="container">
-        <textarea id="chatRecord" rows="20" placeholder="粘贴聊天记录到这里" autofocus></textarea>
-        <br>
-        <label for="standardNumber">实际物价</label>
-        <input type="number" id="standardNumber">
-        <button onclick="processChatRecord()">计算</button>
-        <div id="output"></div>
+      <textarea
+        id="chatRecord"
+        rows="20"
+        placeholder="粘贴聊天记录到这里"
+        autofocus
+      ></textarea>
+      <br />
+      <label for="standardNumber">实际物价</label>
+      <input type="number" id="standardNumber" />
+      <button onclick="processChatRecord()">计算</button>
+      <div id="output"></div>
     </div>
 
     <footer>
-        <p>&copy; 2019-2024 ahfosh_studio. All Rights Reserved.
-            Website based on <a href="https://github.com/ahfosh/toolset">ahfosh's toolset</a></p>
+      <p>
+        &copy; 2019-2024 ahfosh_studio. All Rights Reserved. Website based on
+        <a href="https://github.com/ahfosh/toolset">ahfosh's toolset</a>
+      </p>
     </footer>
 
     <script>
-        function processChatRecord() {
-            var chatRecord = document.getElementById("chatRecord").value;
+      function processChatRecord() {
+        var chatRecord = document.getElementById("chatRecord").value;
 
-            var regex = /【(.*?)】(.*?) (\d{2}:\d{2}:\d{2})\n([\s\S]*?)(?=\n【|$)/g;
-            var match;
-            var messages = [];
+        var regex = /【(.*?)】(.*?) (\d{2}:\d{2}:\d{2})\n([\s\S]*?)(?=\n【|$)/g;
+        var match;
+        var messages = [];
 
-            while ((match = regex.exec(chatRecord)) !== null) {
-                var level = match[1];
-                var username = match[2];
-                var time = match[3];
-                var content = match[4].trim();
+        while ((match = regex.exec(chatRecord)) !== null) {
+          var level = match[1];
+          var username = match[2];
+          var time = match[3];
+          var content = match[4].trim();
 
-                var message = {
-                    level: level,
-                    username: username,
-                    time: time,
-                    content: content
-                };
+          var message = {
+            level: level,
+            username: username,
+            time: time,
+            content: content,
+          };
 
-                messages.push(message);
-            }
-
-            var standardNumber = parseFloat(document.getElementById("standardNumber").value);
-
-            displayMessages(messages, standardNumber);
+          messages.push(message);
         }
 
-        function displayMessages(messages, standardNumber) {
-            var outputDiv = document.getElementById("output");
-            outputDiv.innerHTML = "";
+        var standardNumber = parseFloat(
+          document.getElementById("standardNumber").value
+        );
 
-            if (messages.length === 0) {
-                outputDiv.innerHTML = "<p>未找到完全由数字组成的消息。</p>";
-                return;
-            }
+        displayMessages(messages, standardNumber);
+      }
 
-            var table = document.createElement("table");
-            var headerRow = table.insertRow();
-            var headers = ["等级", "昵称", "时间", "内容", "差值"];
+      function displayMessages(messages, standardNumber) {
+        var outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "";
 
-            for (var i = 0; i < headers.length; i++) {
-                var header = document.createElement("th");
-                header.textContent = headers[i];
-                headerRow.appendChild(header);
-            }
-
-            var minDifference = Number.MAX_VALUE;
-            var minDifferenceMessage = null;
-
-            for (var j = 0; j < messages.length; j++) {
-                var message = messages[j];
-                var row = table.insertRow();
-                row.insertCell().textContent = message.level;
-                row.insertCell().textContent = message.username;
-                row.insertCell().textContent = message.time;
-                row.insertCell().textContent = message.content;
-
-                var number = parseFloat(message.content);
-                var difference = number - standardNumber;
-                var differenceText = difference.toFixed(2);
-                row.insertCell().textContent = differenceText;
-
-                if (Math.abs(difference) < Math.abs(minDifference)) {
-                    minDifference = difference;
-                    minDifferenceMessage = message;
-                }
-            }
-
-            outputDiv.appendChild(table);
-
-            if (minDifferenceMessage) {
-                var minDifferenceOutput = document.createElement("p");
-                var difference = minDifference.toFixed(2);
-                var diffText = difference > 0 ? " 大了 " : " 小了 ";
-                minDifferenceOutput.textContent = "最优者是" + minDifferenceMessage.username + "，其所猜价格 " + minDifferenceMessage.content + " 比实际价格 " + standardNumber + diffText + Math.abs(difference);
-                outputDiv.appendChild(minDifferenceOutput);
-            }
+        if (messages.length === 0) {
+          outputDiv.innerHTML = "<p>未找到完全由数字组成的消息。</p>";
+          return;
         }
+
+        var table = document.createElement("table");
+        var headerRow = table.insertRow();
+        var headers = ["等级", "昵称", "时间", "内容", "差值"];
+
+        for (var i = 0; i < headers.length; i++) {
+          var header = document.createElement("th");
+          header.textContent = headers[i];
+          headerRow.appendChild(header);
+        }
+
+        var minDifference = Number.MAX_VALUE;
+        var minDifferenceMessage = null;
+
+        for (var j = 0; j < messages.length; j++) {
+          var message = messages[j];
+          var row = table.insertRow();
+          row.insertCell().textContent = message.level;
+          row.insertCell().textContent = message.username;
+          row.insertCell().textContent = message.time;
+          row.insertCell().textContent = message.content;
+
+          var number = parseFloat(message.content);
+          var difference = number - standardNumber;
+          var differenceText = difference.toFixed(2);
+          row.insertCell().textContent = differenceText;
+
+          if (Math.abs(difference) < Math.abs(minDifference)) {
+            minDifference = difference;
+            minDifferenceMessage = message;
+          }
+        }
+
+        outputDiv.appendChild(table);
+
+        if (minDifferenceMessage) {
+          var minDifferenceOutput = document.createElement("p");
+          var difference = minDifference.toFixed(2);
+          var diffText = difference > 0 ? " 大了 " : " 小了 ";
+          minDifferenceOutput.textContent =
+            "最优者是" +
+            minDifferenceMessage.username +
+            "，其所猜价格 " +
+            minDifferenceMessage.content +
+            " 比实际价格 " +
+            standardNumber +
+            diffText +
+            Math.abs(difference);
+          outputDiv.appendChild(minDifferenceOutput);
+        }
+      }
     </script>
-</body>
-
+  </body>
 </html>
