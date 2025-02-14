@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>报名选手筛选</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        width: 95%;
+        max-width: 1200px;
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+
+      button {
+        display: inline-block;
+        width: auto;
+        padding: 10px 15px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 0 5px;
+      }
+
+      .button-container {
+        text-align: center;
+        margin-bottom: 15px;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      button:active {
+        transform: translateY(0);
+        box-shadow: none;
+      }
+
+      table {
+        width: 100%;
+        max-width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        font-size: 14px;
+      }
+
+      th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      tr:hover {
+        background-color: #f2f2f2;
+      }
+
+      @media (max-width: 768px) {
+        table {
+          display: block;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <input
+        id="userIdInput"
+        placeholder="输入若干userId，用逗号、空格、换行等分隔"
+      />
+      <div class="button-container">
+        <button onclick="fetchUserInfo()">筛选</button>
+        <button onclick="exportToCSV()">导出为 CSV</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th onclick="sortTable(0)">序号</th>
+            <th onclick="sortTable(1)">用户ID</th>
+            <th onclick="sortTable(2)">用户名</th>
+            <th onclick="sortTable(3)">全球积分</th>
+            <th onclick="sortTable(4)">中国积分</th>
+            <th onclick="sortTable(5)">封禁状态</th>
+          </tr>
+        </thead>
+        <tbody id="userInfo"></tbody>
+      </table>
+    </div>
+
+    <script>
+      async function fetchUserInfo() {
+        const baseUrl = "https://tuxun.fun/api/v0/tuxun";
+        const input = document.getElementById("userIdInput").value;
+        const userIds = input
+          .split(/[\s,，\/]+/)
+          .filter((id) => id.trim() !== "");
+
+        const userInfoTable = document.getElementById("userInfo");
+        userInfoTable.innerHTML = "";
+
+        for (let i = 0; i < userIds.length; i++) {
+          const userId = userIds[i];
+          try {
+            const profileResponse = await fetch(
+              `${baseUrl}/user/getProfile?userId=${userId}`
+            );
+            const profileData = await profileResponse.json();
+            const userName = profileData.data.userName || "未知";
+            const rating = profileData.data.rating || "未知";
+            const chinaRating = profileData.data.chinaRating || "未知";
+
+            const banResponse = await fetch(
+              `${baseUrl}/user/checkBan?userId=${userId}`
+            );
+            const banData = await banResponse.json();
+            const isBanned = banData.data ? "是" : "否";
+
+            const row = userInfoTable.insertRow();
+            row.insertCell().textContent = i + 1;
+            row.insertCell().textContent = userId;
+            row.insertCell().textContent = userName;
+            row.insertCell().textContent = rating;
+            row.insertCell().textContent = chinaRating;
+            row.insertCell().textContent = isBanned;
+          } catch (error) {
+            console.error(`获取用户 ${userId} 信息时出错:`, error);
+            const row = userInfoTable.insertRow();
+            row.insertCell().textContent = i + 1;
+            row.insertCell().textContent = userId;
+            row.insertCell().textContent = "未知";
+            row.insertCell().textContent = "未知";
+            row.insertCell().textContent = "未知";
+            row.insertCell().textContent = "未知";
+          }
+        }
+      }
+
+      function sortTable(n) {
+        var table,
+          rows,
+          switching,
+          i,
+          x,
+          y,
+          shouldSwitch,
+          dir,
+          switchcount = 0;
+        table = document.getElementById("userInfo").parentNode;
+        switching = true;
+        dir = "asc";
+        while (switching) {
+          switching = false;
+          rows = table.rows;
+          for (i = 1; i < rows.length - 1; i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            if (dir == "asc") {
+              if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                shouldSwitch = true;
+                break;
+              }
+            } else if (dir == "desc") {
+              if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                shouldSwitch = true;
+                break;
+              }
+            }
+          }
+          if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            switchcount++;
+          } else {
+            if (switchcount == 0 && dir == "asc") {
+              dir = "desc";
+              switching = true;
+            }
+          }
+        }
+      }
+
+      function exportToCSV() {
+        const table = document.getElementById("userInfo").parentNode;
+        const rows = table.rows;
+        let csvContent = "";
+        for (let i = 0; i < rows.length; i++) {
+          const row = [];
+          for (let j = 0; j < rows[i].cells.length; j++) {
+            row.push(rows[i].cells[j].textContent);
+          }
+          csvContent += row.join(",") + "\n";
+        }
+        const blob = new Blob([csvContent], { type: "text/csv" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "user_info.csv";
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+    </script>
+  </body>
+</html>
