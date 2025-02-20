@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>英文词汇听写</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f9;
+      }
+
+      input {
+        padding: 10px;
+        margin: 10px;
+        width: 300px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      #word-display {
+        font-size: 24px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input
+      type="text"
+      id="word-input"
+      placeholder="请输入英文词汇，用空格分隔"
+    />
+    <button id="start-button">开始听写</button>
+    <div id="word-display"></div>
+
+    <script>
+      const wordInput = document.getElementById("word-input");
+      const startButton = document.getElementById("start-button");
+      const wordDisplay = document.getElementById("word-display");
+
+      startButton.addEventListener("click", () => {
+        const words = wordInput.value
+          .split(" ")
+          .filter((word) => word.length > 0);
+        if (words.length === 0) {
+          alert("请输入有效的英文词汇！");
+          return;
+        }
+
+        let index = 0;
+        const speak = () => {
+          if (index < words.length) {
+            const word = words[index];
+            wordDisplay.textContent = word;
+
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(word);
+            synth.speak(utterance);
+
+            index++;
+            setTimeout(speak, 3000); // 每隔 3 秒播放下一个词汇
+          } else {
+            wordDisplay.textContent = "听写结束";
+          }
+        };
+
+        speak();
+      });
+    </script>
+  </body>
+</html>
